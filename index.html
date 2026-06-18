@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>◊ FallBooksOnboard · sovereign accountancy AML CDD + PSC + engagement for UK practice firms</title>
+<meta name="description" content="Sovereign accountancy-firm client onboarding: HMRC/ICAEW/ACCA AML CDD, PSC + beneficial-ownership capture, MLR 2017 risk grading, engagement letters, document hashing, audit chain. IDB-only · device-local · single HTML file.">
+<meta name="prime" content="773">
+<meta name="theme-color" content="#0b0a0f">
+<meta name="application-name" content="FallBooksOnboard">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b0a0f' rx='10'/><text x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' text-anchor='middle' fill='%23b8974a'>%E2%97%8A</text></svg>">
+<link rel="manifest" href='data:application/manifest+json,{"name":"FallBooksOnboard","short_name":"booksonboard","start_url":"./","display":"standalone","orientation":"any","background_color":"%230b0a0f","theme_color":"%23b8974a","description":"Sovereign accountancy-firm AML CDD onboarding (MLR 2017 + PSC + engagement letter)","icons":[{"src":"data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27><rect width=%27192%27 height=%27192%27 fill=%27%230b0a0f%27 rx=%2728%27/><text x=%2796%27 y=%27138%27 font-family=%27Georgia,serif%27 font-size=%27124%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23b8974a%27>%E2%97%8A</text></svg>","sizes":"192x192","type":"image/svg+xml","purpose":"any"},{"src":"data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 512 512%27><rect width=%27512%27 height=%27512%27 fill=%27%230b0a0f%27 rx=%2772%27/><text x=%27256%27 y=%27368%27 font-family=%27Georgia,serif%27 font-size=%27328%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23b8974a%27>%E2%97%8A</text></svg>","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]}'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0b0a0f;--void-2:#13121a;--ink:#1a1922;--ink-2:#22212c;
+  --line:#2a2934;--line-soft:#1f1e28;
+  --cream:#e6e1d6;--cream-dim:#a8a395;--cream-muted:#6e6a5e;
+  --brass:#b8974a;--amber:#ff8c00;--ox:#8b1a1a;--ox-2:#5e1212;
+  --green:#4ade80;--red:#ef4444;--blue:#60a5fa;--yellow:#fbbf24;--violet:#a78bfa;
+  --serif:'Libre Baskerville',Georgia,ui-serif,serif;
+  --sans:'DM Sans','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono','SF Mono',ui-monospace,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--void);color:var(--cream);font:14px/1.55 var(--sans);min-height:100dvh;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.035;background-image:radial-gradient(circle at 25% 30%,var(--brass) 0,transparent 1px),radial-gradient(circle at 75% 70%,var(--cream) 0,transparent 1px);background-size:3px 3px,5px 5px;mix-blend-mode:overlay}
+button{font-family:inherit;cursor:pointer;background:transparent;border:none;color:inherit}
+input,textarea,select{font-family:inherit;background:var(--ink);border:1px solid var(--line);color:var(--cream);border-radius:3px;padding:8px 11px;outline:none;font-size:13px;width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--brass)}
+textarea{resize:vertical;min-height:60px;line-height:1.5}
+a{color:var(--brass);text-decoration:none}
+a:hover{color:var(--amber)}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--brass)}
+
+.app{min-height:100dvh;display:grid;grid-template-rows:auto 1fr;position:relative;z-index:1}
+header{display:flex;align-items:center;border-bottom:1px solid var(--line);background:var(--void-2);user-select:none;flex-wrap:wrap;min-height:52px}
+.brand{display:flex;align-items:center;gap:11px;padding:10px 18px;border-right:1px solid var(--line)}
+.brand .mark{width:30px;height:30px;background:linear-gradient(135deg,var(--brass),var(--amber));border-radius:5px;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:17px;color:var(--void)}
+.brand .name{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:0.01em}
+.brand .seal{font-family:var(--mono);font-size:9px;color:var(--cream-muted);letter-spacing:0.18em;text-transform:uppercase;margin-top:1px}
+
+nav.tabs{display:flex;flex:1;overflow-x:auto;align-items:stretch}
+nav.tabs button{padding:0 18px;font-size:12px;color:var(--cream-dim);letter-spacing:0.04em;display:flex;align-items:center;gap:6px;border-right:1px solid var(--line-soft);height:52px;white-space:nowrap;border-top:2px solid transparent;font-weight:500}
+nav.tabs button:hover{background:var(--ink);color:var(--cream)}
+nav.tabs button.active{background:var(--ink);color:var(--brass);border-top-color:var(--brass)}
+nav.tabs .tcount{font-family:var(--mono);font-size:9px;color:var(--cream-muted);background:var(--ink-2);padding:1px 6px;border-radius:8px;margin-left:4px}
+
+.tools-r{display:flex;align-items:center;gap:6px;padding:0 14px;height:52px;border-left:1px solid var(--line);margin-left:auto}
+.tool-btn{padding:5px 11px;border-radius:3px;font-size:11px;color:var(--cream-dim);letter-spacing:0.06em;text-transform:uppercase;font-family:var(--mono);border:1px solid var(--line)}
+.tool-btn:hover{background:var(--ink);color:var(--cream);border-color:var(--brass)}
+.tool-btn.primary{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.tool-btn.primary:hover{background:var(--amber);border-color:var(--amber)}
+.tool-btn.t3{border-color:var(--blue);color:var(--blue)}
+
+main{padding:18px 22px 80px;overflow-y:auto;max-width:1280px;margin:0 auto;width:100%}
+@media (max-width:640px){main{padding:14px 12px 80px}.brand{padding:8px 12px}.brand .seal{display:none}nav.tabs button{padding:0 12px;font-size:11px}}
+
+.disclaimer{background:linear-gradient(180deg,rgba(139,26,26,0.18),rgba(139,26,26,0.08));border:1px solid var(--ox);border-left:3px solid var(--ox);border-radius:3px;padding:12px 16px;margin-bottom:18px;font-size:12px;color:var(--cream);line-height:1.5}
+.disclaimer strong{color:var(--brass);font-family:var(--serif)}
+
+.section-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:14px;flex-wrap:wrap}
+.section-h h2{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:0.01em}
+.section-h .sub{font-family:var(--mono);font-size:11px;color:var(--cream-muted);letter-spacing:0.08em;text-transform:uppercase}
+.section-h .actions{display:flex;gap:6px;flex-wrap:wrap}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:680px){.grid-2{grid-template-columns:1fr}}
+.card{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+.card h3{font-family:var(--serif);font-size:15px;font-weight:700;margin-bottom:10px;color:var(--cream);letter-spacing:0.01em}
+.card h3 .meta{font-family:var(--mono);font-size:10px;color:var(--brass);letter-spacing:0.1em;margin-left:8px;font-weight:400}
+
+.kpi{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dashed var(--line-soft);font-size:13px}
+.kpi:last-child{border-bottom:none}
+.kpi .l{color:var(--cream-dim)}
+.kpi .v{font-family:var(--mono);color:var(--cream);font-weight:500}
+.kpi .v.green{color:var(--green)}.kpi .v.red{color:var(--red)}.kpi .v.amber{color:var(--amber)}.kpi .v.brass{color:var(--brass)}.kpi .v.blue{color:var(--blue)}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+@media (max-width:520px){.row,.row3{grid-template-columns:1fr}}
+.field{margin-bottom:10px}
+.field label{display:block;font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.field .hint{font-size:11px;color:var(--cream-muted);margin-top:4px;font-family:var(--mono);line-height:1.4}
+.field .req{color:var(--ox);margin-left:3px}
+
+.btn{padding:8px 15px;border:1px solid var(--brass);border-radius:3px;font-size:12px;color:var(--cream);background:transparent;letter-spacing:0.04em;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--amber);color:var(--amber)}
+.btn.primary{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.btn.primary:hover{background:var(--amber);border-color:var(--amber);color:var(--void)}
+.btn.danger{border-color:var(--ox);color:var(--ox)}
+.btn.danger:hover{background:var(--ox);color:var(--cream);border-color:var(--ox)}
+.btn.ghost{border-color:var(--line);color:var(--cream-dim)}
+.btn.ghost:hover{border-color:var(--brass);color:var(--brass)}
+.btn.sm{padding:5px 10px;font-size:11px}
+.btn:disabled{opacity:0.45;cursor:not-allowed}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th,td{padding:9px 11px;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:middle}
+th{color:var(--brass);font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;background:var(--void-2);position:sticky;top:0}
+td.r{text-align:right;font-family:var(--mono)}
+tr.row-link{cursor:pointer}
+tr.row-link:hover td{background:var(--ink)}
+
+.tag{display:inline-block;padding:2px 8px;border-radius:11px;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--brass);color:var(--brass);margin-right:4px;line-height:1.5}
+.tag.amber{border-color:var(--amber);color:var(--amber)}
+.tag.green{border-color:var(--green);color:var(--green)}
+.tag.red{border-color:var(--red);color:var(--red)}
+.tag.blue{border-color:var(--blue);color:var(--blue)}
+.tag.muted{border-color:var(--cream-muted);color:var(--cream-muted)}
+.tag.violet{border-color:var(--violet);color:var(--violet)}
+.tag.ox{border-color:var(--ox);color:var(--ox)}
+
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{padding:5px 11px;border-radius:14px;border:1px solid var(--line);color:var(--cream-dim);font-size:11px;font-family:var(--mono);letter-spacing:0.04em;cursor:pointer;text-transform:lowercase;background:var(--void-2)}
+.chip:hover{border-color:var(--brass);color:var(--cream)}
+.chip.active{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.chip.due{background:var(--ox);color:var(--cream);border-color:var(--ox)}
+
+.wizard{max-width:780px;margin:0 auto}
+.wizard-steps{display:flex;gap:4px;margin-bottom:22px;overflow-x:auto;padding-bottom:6px}
+.wstep{flex:1 1 0;min-width:52px;padding:6px 6px;background:var(--void-2);border:1px solid var(--line);border-radius:3px;font-size:9px;color:var(--cream-muted);text-align:center;font-family:var(--mono);letter-spacing:0.04em;text-transform:uppercase;cursor:pointer}
+.wstep.done{border-color:var(--green);color:var(--green)}
+.wstep.active{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.wstep .n{font-size:12px;display:block;font-weight:600}
+.wizard-body{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:22px;min-height:420px}
+.wizard-body h3{font-family:var(--serif);font-size:18px;margin-bottom:6px;color:var(--brass)}
+.wizard-body .step-sub{color:var(--cream-dim);font-size:12px;margin-bottom:18px;font-style:italic}
+.wizard-foot{display:flex;justify-content:space-between;margin-top:18px;gap:10px}
+
+.dz{border:2px dashed var(--line);border-radius:6px;padding:24px;text-align:center;background:var(--ink);transition:0.18s;cursor:pointer}
+.dz:hover,.dz.hover{border-color:var(--brass);background:var(--ink-2)}
+.dz .icon{font-size:32px;color:var(--brass);font-family:var(--serif)}
+.dz .label{font-family:var(--mono);font-size:11px;color:var(--cream-dim);letter-spacing:0.08em;text-transform:uppercase;margin-top:8px}
+.doc-list{margin-top:14px;display:flex;flex-direction:column;gap:7px}
+.doc-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--ink);border:1px solid var(--line);border-radius:3px;font-size:12px;flex-wrap:wrap}
+.doc-row .dtype{font-family:var(--mono);font-size:10px;color:var(--brass);text-transform:uppercase;padding:2px 6px;border:1px solid var(--brass);border-radius:2px}
+.doc-row .dname{flex:1;color:var(--cream);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:120px}
+.doc-row .dmeta{font-family:var(--mono);font-size:10px;color:var(--cream-muted)}
+.doc-row .dhash{font-family:var(--mono);font-size:9px;color:var(--cream-muted);max-width:120px;overflow:hidden;text-overflow:ellipsis}
+
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:200;padding:14px;animation:fadein 0.18s}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.modal{background:var(--void-2);border:1px solid var(--brass);border-radius:5px;max-width:780px;width:100%;max-height:92vh;overflow-y:auto;padding:0}
+.modal-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--void-2);z-index:1}
+.modal-h h3{font-family:var(--serif);font-size:16px;color:var(--brass)}
+.modal-b{padding:18px 22px 22px}
+.modal-close{font-family:var(--mono);font-size:14px;color:var(--cream-dim);padding:4px 10px;border:1px solid var(--line);border-radius:3px}
+.modal-close:hover{color:var(--ox);border-color:var(--ox)}
+
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--void-2);border:1px solid var(--brass);color:var(--cream);padding:9px 16px;border-radius:3px;font-size:12px;opacity:0;transition:opacity 0.22s,bottom 0.22s;font-family:var(--mono);letter-spacing:0.04em;z-index:300;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.5)}
+.toast.show{opacity:1;bottom:30px}
+
+.chat{display:flex;flex-direction:column;gap:10px;max-height:58vh;overflow-y:auto;padding:6px;margin-bottom:8px}
+.msg{padding:11px 15px;border-radius:6px;max-width:88%;font-size:13px;line-height:1.55;white-space:pre-wrap;word-break:break-word}
+.msg.user{background:var(--ink);align-self:flex-end;border-bottom-right-radius:2px}
+.msg.bot{background:var(--void-2);border:1px solid var(--line);border-left:2px solid var(--brass);align-self:flex-start;border-bottom-left-radius:2px}
+.msg.bot .src{font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.08em;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.chat-input{display:flex;gap:8px;margin-top:10px}
+.chat-input input{flex:1;padding:11px 14px}
+
+.audit-entry{padding:8px 11px;border-left:2px solid var(--brass);background:var(--ink);margin-bottom:5px;font-family:var(--mono);font-size:11px;border-radius:0 3px 3px 0}
+.audit-entry .a-action{color:var(--brass);font-weight:600}
+.audit-entry .a-meta{color:var(--cream-muted);font-size:10px;margin-top:2px}
+.audit-entry .a-reason{color:var(--cream-dim);margin-top:3px;font-family:var(--sans);font-style:italic}
+
+.cd-grid{display:grid;grid-template-columns:300px 1fr;gap:18px;margin-top:8px}
+@media (max-width:840px){.cd-grid{grid-template-columns:1fr}}
+.cd-side{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:14px}
+.cd-side .who{font-family:var(--serif);font-size:17px;color:var(--cream);margin-bottom:4px}
+.cd-side .sub{font-family:var(--mono);font-size:11px;color:var(--cream-muted);margin-bottom:10px;letter-spacing:0.04em}
+.cd-side .actions{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.cd-side .actions .btn{justify-content:center;text-align:center}
+.cd-body{display:flex;flex-direction:column;gap:14px}
+
+.banner{padding:10px 14px;border-radius:3px;font-size:12px;line-height:1.55;border:1px solid;margin-bottom:14px}
+.banner.warn{border-color:var(--amber);background:rgba(255,140,0,0.08);color:var(--cream)}
+.banner.info{border-color:var(--blue);background:rgba(96,165,250,0.06);color:var(--cream)}
+.banner.success{border-color:var(--green);background:rgba(74,222,128,0.06);color:var(--cream)}
+.banner.danger{border-color:var(--ox);background:rgba(139,26,26,0.12);color:var(--cream)}
+
+.empty{text-align:center;padding:60px 20px;color:var(--cream-muted)}
+.empty .big{font-family:var(--serif);font-size:22px;color:var(--brass);margin-bottom:8px}
+.empty .small{font-size:13px;margin-bottom:20px}
+
+.dash-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}
+.dash-kpi{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.dash-kpi .n{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--brass);line-height:1.1}
+.dash-kpi .l{font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+.dash-kpi.due .n{color:var(--ox)}
+.dash-kpi.warn .n{color:var(--amber)}
+.dash-kpi.ok .n{color:var(--green)}
+
+.divider{height:1px;background:var(--line);margin:18px 0}
+
+input[type=checkbox]{width:auto;margin-right:8px;vertical-align:middle;accent-color:var(--brass)}
+input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
+
+.help-pill{display:inline-block;padding:1px 7px;border-radius:8px;background:var(--ink);color:var(--cream-muted);font-family:var(--mono);font-size:10px;margin-left:6px;border:1px solid var(--line);cursor:help}
+
+.foot{text-align:center;padding:30px 12px 12px;font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.08em}
+.foot a{color:var(--cream-muted);text-decoration:underline}
+
+.psc-row{display:grid;grid-template-columns:1fr 1fr 90px 70px;gap:8px;align-items:center;padding:8px;background:var(--ink);border:1px solid var(--line);border-radius:3px;margin-bottom:6px;font-size:12px}
+@media (max-width:600px){.psc-row{grid-template-columns:1fr 70px}}
+.psc-row .pn{color:var(--cream);font-weight:500}
+.psc-row .pp{font-family:var(--mono);color:var(--brass)}
+.checkgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:520px){.checkgrid{grid-template-columns:1fr}}
+.checkgrid label{display:flex;align-items:center;font-size:12px;padding:7px 10px;background:var(--ink);border:1px solid var(--line);border-radius:3px;cursor:pointer}
+.checkgrid label:hover{border-color:var(--brass)}
+.checkgrid input:checked + span{color:var(--brass)}
+.risk-pill{display:inline-block;padding:3px 10px;border-radius:11px;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.risk-low{background:rgba(74,222,128,0.12);color:var(--green);border:1px solid var(--green)}
+.risk-medium{background:rgba(255,140,0,0.12);color:var(--amber);border:1px solid var(--amber)}
+.risk-high{background:rgba(139,26,26,0.18);color:var(--ox);border:1px solid var(--ox)}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand">
+    <div class="mark">&#9674;</div>
+    <div>
+      <div class="name" id="brandName">FallBooksOnboard</div>
+      <div class="seal" id="brandSeal">SOVEREIGN · AML CDD · PSC · P773</div>
+    </div>
+  </div>
+  <nav class="tabs" id="nav"></nav>
+  <div class="tools-r">
+    <button class="tool-btn" id="tierBadge" onclick="openModal('settings')">T0</button>
+    <button class="tool-btn" onclick="openModal('audit')">audit</button>
+    <button class="tool-btn primary" onclick="newClient()">+ client</button>
+  </div>
+</header>
+<main id="view"></main>
+</div>
+<div id="modalRoot"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+// ════════════════════════════════════════════════════════════════
+// CONSTANTS
+// ════════════════════════════════════════════════════════════════
+const TOOLNAME='fallbooksonboard';
+const VERSION='1.0.0';
+const PRIME=773;
+const SCHEMA_V=1;
+const STORE='fallbooksonboard.v1';
+const AUDIT_CAP=50000;
+
+const TABS=[
+  {id:'clients',label:'Clients'},
+  {id:'dashboard',label:'Dashboard'},
+  {id:'psc',label:'PSC Cache'},
+  {id:'firm',label:'Firm'},
+  {id:'advisers',label:'Advisers'},
+  {id:'qa',label:'AML Help'},
+];
+
+const ENTITY_TYPES=[
+  {id:'sole-trader',label:'Sole Trader',ind:true},
+  {id:'partnership',label:'Partnership',ind:false},
+  {id:'llp',label:'LLP',ind:false},
+  {id:'limited-company',label:'Limited Company',ind:false},
+  {id:'charity',label:'Charity',ind:false},
+  {id:'trust',label:'Trust',ind:false},
+  {id:'public-body',label:'Public Body',ind:false},
+  {id:'other',label:'Other',ind:false},
+];
+
+const AML_SUPERVISORS=['HMRC','ICAEW','ACCA','CIMA','AAT','CIOT','ATT','IFA','other'];
+const PROF_BODIES=['ICAEW','ACCA','CIMA','AAT','CIOT','ATT','IFA','other'];
+const SERVICES=[
+  {id:'accounts',label:'Statutory Accounts'},
+  {id:'ct',label:'Corporation Tax (CT600)'},
+  {id:'vat',label:'VAT / MTD'},
+  {id:'payroll',label:'Payroll / PAYE / RTI'},
+  {id:'sa',label:'Self-Assessment (SA100)'},
+  {id:'tax-planning',label:'Tax Planning'},
+  {id:'bookkeeping',label:'Bookkeeping'},
+  {id:'companies-house-filings',label:'Companies House Filings'},
+];
+const VAT_SCHEMES=[
+  {id:'none',label:'Not VAT registered'},
+  {id:'standard',label:'Standard'},
+  {id:'flat-rate',label:'Flat Rate'},
+  {id:'cash',label:'Cash Accounting'},
+  {id:'annual',label:'Annual Accounting'},
+  {id:'margin',label:'Margin (2nd-hand)'},
+];
+const FEE_BASES=[
+  {id:'fixed-monthly',label:'Fixed Monthly'},
+  {id:'hourly',label:'Hourly'},
+  {id:'fixed-annual',label:'Fixed Annual'},
+  {id:'per-job',label:'Per Job'},
+];
+const DOC_TYPES_INDIV=[
+  {id:'passport',label:'Passport',expDays:365*10},
+  {id:'driving-licence',label:'Driving Licence',expDays:365*10},
+  {id:'national-id',label:'National ID',expDays:365*5},
+  {id:'utility-bill',label:'Utility Bill (POA)',expDays:90},
+  {id:'bank-statement',label:'Bank Statement (POA)',expDays:90},
+  {id:'council-tax',label:'Council Tax Bill',expDays:365},
+  {id:'mortgage-statement',label:'Mortgage Statement',expDays:365},
+];
+const DOC_TYPES_ENTITY=[
+  {id:'cert-incorporation',label:'Certificate of Incorporation',expDays:null},
+  {id:'latest-accounts',label:'Latest Filed Accounts',expDays:365},
+  {id:'psc-register',label:'PSC Register (copy)',expDays:365},
+  {id:'reg-office-proof',label:'Proof of Registered Office',expDays:365},
+  {id:'trust-deed',label:'Trust Deed',expDays:null},
+  {id:'partnership-agreement',label:'Partnership Agreement',expDays:null},
+  {id:'authority-letter',label:'Authority / 64-8 Letter',expDays:365},
+];
+
+const CASH_HEAVY_SECTORS=[
+  'restaurants/takeaways','taxis/private-hire','car wash','convenience store','market trader',
+  'beauty/nail salon','cash-in-hand construction','scrap metal','antiques dealer','MSB / money service'
+];
+
+const RISK_REVIEW_DAYS={low:365,medium:180,high:90};
+
+// ════════════════════════════════════════════════════════════════
+// T0 KNOWLEDGE BASE
+// ════════════════════════════════════════════════════════════════
+const T0_RULES=[
+  {id:'mlr2017',q:['mlr','mlr 2017','money laundering regulations','aml regulations'],
+    title:'MLR 2017 — Money Laundering Regulations 2017',
+    body:'The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations 2017 (SI 2017/692) are the principal UK AML framework. They apply to accountants, auditors, tax advisers, insolvency practitioners and trust/company service providers. Key duties: (i) firm-wide risk assessment (reg 18); (ii) policies, controls and procedures (reg 19); (iii) customer due diligence — standard, simplified and enhanced (regs 27-35); (iv) ongoing monitoring (reg 28); (v) record-keeping for 5 years after end of business relationship (reg 40); (vi) training (reg 24); (vii) appointment of MLRO + nominated officer (reg 21).',
+    refs:['MLR 2017 SI 2017/692','POCA 2002','CCAB AML guidance 2023']},
+
+  {id:'supervisors',q:['supervisor','who supervises','aml supervisor','professional body'],
+    title:'AML supervisors for accountants',
+    body:'An accountancy practice in the UK MUST be supervised for AML by either (a) a designated professional body — ICAEW, ACCA, CIMA, AAT, CIOT, ATT, IFA — or (b) HMRC if not a member of a designated PB. You must register with your supervisor and pay the annual fee. The supervisor publishes sector risk assessments and conducts inspections. Operating without supervision is a criminal offence under MLR 2017 reg 56.',
+    refs:['MLR 2017 reg 7 & sch 1','HMRC AML guidance for accountancy service providers']},
+
+  {id:'psc',q:['psc','person of significant control','persons with significant control'],
+    title:'PSC — Persons with Significant Control',
+    body:'A PSC is an individual (or relevant legal entity / RLE) who meets one or more of five conditions: (1) holds more than 25% of shares; (2) holds more than 25% of voting rights; (3) holds the right to appoint or remove a majority of the board; (4) has the right to exercise, or actually exercises, significant influence or control; (5) has the right to exercise significant influence or control over a trust/firm whose trustees/members meet conditions 1-4. Companies must maintain a PSC register and file changes within 14 days (PSC01-PSC09 forms). Accountants must collect, verify and record this for entity clients (MLR 2017 reg 28(3A)).',
+    refs:['Companies Act 2006 Part 21A','SBEEA 2015','PSC Regs 2016 SI 2016/339']},
+
+  {id:'bo25',q:['beneficial ownership','25%','beneficial owner'],
+    title:'Beneficial ownership — the 25% threshold',
+    body:'Under MLR 2017 reg 5, a beneficial owner of a body corporate is any individual who (i) exercises ultimate control through ownership/control of more than 25% of shares/voting rights, OR (ii) otherwise exercises control over the management. For partnerships: any individual entitled to/controlling more than 25% of capital, profits or voting rights. For trusts: settlor, trustees, protector, beneficiaries (named or class), and any individual otherwise exercising control. Where no individual can be identified as a BO, the senior managing official is treated as such — and this must be documented.',
+    refs:['MLR 2017 reg 5 & 6','FATF Recommendation 24']},
+
+  {id:'edd',q:['edd','enhanced due diligence','when enhanced'],
+    title:'EDD triggers — when enhanced due diligence is required',
+    body:'EDD is mandatory under MLR 2017 reg 33 when: (a) the case is high-risk per your risk assessment; (b) the client/BO is a PEP, PEP family member or close associate; (c) the client is established in a high-risk third country listed by HMG; (d) the customer has provided false or stolen ID; (e) the transaction is complex/unusually large, has no apparent economic/lawful purpose, or follows an unusual pattern; (f) any case falling within the supervisor\'s published risk indicators. EDD measures include: senior management approval, obtaining additional info on source of wealth/funds, enhanced ongoing monitoring, and obtaining info on the purpose of the transaction.',
+    refs:['MLR 2017 reg 33-35','CCAB AML guidance §5']},
+
+  {id:'pep',q:['pep','politically exposed person','pep definition'],
+    title:'PEP — Politically Exposed Person',
+    body:'Per MLR 2017 reg 35(12) a PEP is an individual entrusted with prominent public functions (other than middle-ranking/junior officials), including: heads of state, government, ministers; MPs; supreme court judges; central bank governors; ambassadors; senior military; senior board members of state-owned enterprises; senior officials of international organisations. Domestic PEPs (UK only) are by default treated as lower-risk than foreign PEPs (FCA FG17/6 as amended 2024). Family members and known close associates also fall within PEP measures. Once status ends, EDD must continue for 12 months minimum (longer if risk justifies).',
+    refs:['MLR 2017 reg 35','FCA FG17/6']},
+
+  {id:'sanctions',q:['sanctions','sanctions check','ofsi','consolidated list'],
+    title:'Sanctions checks — sources',
+    body:'Under the Sanctions and Anti-Money Laundering Act 2018 it is a strict-liability criminal offence to deal with funds of a designated person. Screen ALL clients and PSCs/BOs against: (1) OFSI Consolidated List (HM Treasury) — primary source for UK financial sanctions; (2) UK Sanctions List (FCDO) — broader (travel, arms, etc.); (3) HMRC Designated Targets; (4) UN Consolidated List; (5) EU restrictive measures (still relevant for some cross-border work). Screen at onboarding AND on ongoing basis (changes notified daily). Record date, source, result and screener.',
+    refs:['SAMLA 2018','OFSI Consolidated List','UK Sanctions List (gov.uk)']},
+
+  {id:'ch-deadlines',q:['companies house','ch deadline','filing deadline','cs01','accounts deadline'],
+    title:'Companies House filing deadlines',
+    body:'(a) Annual accounts: 9 months after period end (private company), 6 months (public). First accounts: 21 months from incorporation (private) / 18 (public). (b) Confirmation statement CS01: at least once every 12 months, due 14 days after the review period end. (c) PSC changes: notify within 14 days of company learning, file within further 14 days. (d) Officer changes (AP01 / AP03 / TM01): 14 days. (e) Change of registered office (AD01): when filed (effective on receipt). Late filing penalties for accounts: £150 (up to 1mo), £375 (1-3mo), £750 (3-6mo), £1500 (>6mo) — DOUBLED if late in two consecutive years.',
+    refs:['Companies Act 2006 s.441-453','Companies House late filing penalties manual']},
+
+  {id:'engagement',q:['engagement letter','letter of engagement','engagement requirements'],
+    title:'Engagement letter — what it must contain',
+    body:'Per ICAEW/ACCA/AAT guidance, every client must have a written engagement letter BEFORE work commences (and refreshed if scope changes materially). Required sections: (1) parties and authority; (2) scope of services (precise — "tax compliance for company X" not "tax"); (3) what is EXCLUDED; (4) fees and basis (fixed/hourly/value); (5) client responsibilities (records, timeliness, accuracy); (6) practitioner responsibilities; (7) period of engagement and termination; (8) confidentiality and data protection (UK GDPR); (9) limitation of liability (a cap that is fair and reasonable per UCTA 1977); (10) complaints procedure and AML disclosure; (11) anti-bribery; (12) electronic communication; (13) intellectual property; (14) applicable law (E&W / Scotland / NI). Signed by both parties.',
+    refs:['ICAEW Help Sheet — Engagement letters','ACCA Rulebook 3.7']},
+
+  {id:'fees',q:['fee disclosure','fees','transparency of fees'],
+    title:'Fee disclosure and basis',
+    body:'Fees must be transparent and proportionate. Permitted bases under all PB codes: (a) fixed (per job or recurring); (b) hourly; (c) value-based — but the value, scope and any uplift must be agreed in writing before work commences. Commissions/referral fees from third parties must be disclosed (ICAEW Code §240, ACCA Code). Contingent fees prohibited where they create a self-interest threat to objectivity (e.g. on tax planning amount). VAT treatment must be addressed. Final invoices must show: services delivered, period, basis (£/hr or fixed), VAT.',
+    refs:['ICAEW Code of Ethics §240','ACCA Code §240','FRC Ethical Standard 2024']},
+
+  {id:'conflict',q:['conflict of interest','conflict','coi'],
+    title:'Conflict of interest — accountancy practice',
+    body:'A conflict arises where (a) the firm acts for two or more clients in the same matter with adverse interests; (b) personal/financial interest of partner/staff competes with client duty; (c) the firm performs assurance and advocacy on the same matter. Process: (i) screen at onboarding against client list, PSCs, related parties; (ii) identify conflict — actual, perceived or potential; (iii) assess threats (self-interest, self-review, advocacy, familiarity, intimidation); (iv) apply safeguards (separate teams, info barriers, independent review, declining the engagement); (v) where the conflict is irreconcilable, decline or terminate. Record assessment in writing.',
+    refs:['ICAEW Code §310','ACCA Code §310','FRC ES 2024']},
+
+  {id:'retention',q:['retention','how long','5 years','7 years','keep records'],
+    title:'AML record retention — 5 vs 6 vs 7 years',
+    body:'(a) AML/KYC records under MLR 2017 reg 40: 5 YEARS from the end of the business relationship (or completion of one-off transaction). (b) Tax records (HMRC): 6 YEARS for businesses; individuals 22 months after end of relevant tax year (longer if SA late or under enquiry). (c) ICAEW Code: 7 YEARS for working papers supporting any engagement (ICAEW guidance — beyond the statutory minimum for ethical/practice reasons). (d) Companies Act records: 3 years (private)/6 years (public) for accounting records; minute books permanently. PRACTICAL RULE: retain AML and engagement papers 7 years from end of relationship to satisfy all overlapping regimes.',
+    refs:['MLR 2017 reg 40','TMA 1970 s.12B','ICAEW Code §240.20','CA 2006 s.388']},
+];
+
+// ════════════════════════════════════════════════════════════════
+// UTIL
+// ════════════════════════════════════════════════════════════════
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+function uuid(){return (crypto.randomUUID?crypto.randomUUID():('xxxxxxxxxxxx'.replace(/x/g,()=>(Math.random()*16|0).toString(16))+Date.now().toString(16)))}
+function now(){return Date.now()}
+function esc(s){if(s==null)return '';return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtDate(t){if(!t)return '—';const d=new Date(t);if(isNaN(d))return '—';return d.toISOString().slice(0,10)}
+function fmtDT(t){if(!t)return '—';const d=new Date(t);if(isNaN(d))return '—';return d.toISOString().slice(0,16).replace('T',' ')}
+function daysBetween(a,b){return Math.round((b-a)/86400000)}
+function addDays(t,d){return t+(d*86400000)}
+async function sha256(s){const buf=s instanceof ArrayBuffer?s:new TextEncoder().encode(typeof s==='string'?s:JSON.stringify(s));const h=await crypto.subtle.digest('SHA-256',buf);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+async function sha256Blob(blob){const buf=await blob.arrayBuffer();return sha256(buf)}
+function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}}
+function download(name,content,mime='text/plain'){const blob=content instanceof Blob?content:new Blob([content],{type:mime});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}
+function toast(msg,kind=''){const t=$('#toast');t.textContent=msg;t.className='toast show'+(kind?' '+kind:'');clearTimeout(t._t);t._t=setTimeout(()=>{t.className='toast'},2400)}
+
+// ════════════════════════════════════════════════════════════════
+// IDB
+// ════════════════════════════════════════════════════════════════
+let db=null;
+function openDB(){
+  return new Promise((res,rej)=>{
+    const rq=indexedDB.open(STORE,SCHEMA_V);
+    rq.onupgradeneeded=e=>{
+      const d=e.target.result;
+      if(!d.objectStoreNames.contains('firms'))d.createObjectStore('firms',{keyPath:'id'});
+      if(!d.objectStoreNames.contains('advisers'))d.createObjectStore('advisers',{keyPath:'id'});
+      if(!d.objectStoreNames.contains('clients'))d.createObjectStore('clients',{keyPath:'id'});
+      if(!d.objectStoreNames.contains('cddDocuments'))d.createObjectStore('cddDocuments',{keyPath:'id'});
+      if(!d.objectStoreNames.contains('pscCache'))d.createObjectStore('pscCache',{keyPath:'id'});
+      if(!d.objectStoreNames.contains('audit'))d.createObjectStore('audit',{keyPath:'i'});
+      if(!d.objectStoreNames.contains('settings'))d.createObjectStore('settings',{keyPath:'k'});
+      if(!d.objectStoreNames.contains('engagementQueue'))d.createObjectStore('engagementQueue',{keyPath:'id'});
+    };
+    rq.onsuccess=e=>{db=e.target.result;res(db)};
+    rq.onerror=e=>rej(e);
+  });
+}
+async function dbPut(store,val){
+  if(!db)await openDB();
+  return new Promise((res,rej)=>{
+    const tx=db.transaction(store,'readwrite');tx.objectStore(store).put(val);
+    tx.oncomplete=()=>res(val);tx.onerror=e=>rej(e);
+  });
+}
+async function dbGet(store,k){
+  if(!db)await openDB();
+  return new Promise((res,rej)=>{
+    const rq=db.transaction(store,'readonly').objectStore(store).get(k);
+    rq.onsuccess=()=>res(rq.result);rq.onerror=e=>rej(e);
+  });
+}
+async function dbAll(store){
+  if(!db)await openDB();
+  return new Promise((res,rej)=>{
+    const rq=db.transaction(store,'readonly').objectStore(store).getAll();
+    rq.onsuccess=()=>res(rq.result||[]);rq.onerror=e=>rej(e);
+  });
+}
+async function dbDel(store,k){
+  if(!db)await openDB();
+  return new Promise((res,rej)=>{
+    const tx=db.transaction(store,'readwrite');tx.objectStore(store).delete(k);
+    tx.oncomplete=()=>res();tx.onerror=e=>rej(e);
+  });
+}
+async function dbClear(store){
+  if(!db)await openDB();
+  return new Promise((res,rej)=>{
+    const tx=db.transaction(store,'readwrite');tx.objectStore(store).clear();
+    tx.oncomplete=()=>res();tx.onerror=e=>rej(e);
+  });
+}
+
+// ════════════════════════════════════════════════════════════════
+// AUDIT
+// ════════════════════════════════════════════════════════════════
+async function audit(action,clientId,reasoning,payload){
+  const i=state.audit.length+1;
+  const prevHash=state.audit.length?state.audit[state.audit.length-1].docHash:'GENESIS';
+  const ts=now();
+  const entry={
+    i,ts,
+    tool:TOOLNAME,
+    adviserId:state.activeAdviserId||'',
+    clientId:clientId||'',
+    action,
+    reasoning:reasoning||'',
+    configVersion:`${TOOLNAME}@${VERSION}`,
+    prevHash,
+    payload:payload||{}
+  };
+  entry.docHash=await sha256(JSON.stringify({prevHash,ts,action,clientId:entry.clientId,payload:entry.payload}));
+  state.audit.push(entry);
+  if(state.audit.length>AUDIT_CAP)state.audit=state.audit.slice(-AUDIT_CAP);
+  await dbPut('audit',entry);
+}
+
+// ════════════════════════════════════════════════════════════════
+// MESH (fall-books + fall-signal)
+// ════════════════════════════════════════════════════════════════
+let bcBooks=null,bcSignal=null;
+function meshBoot(){
+  try{
+    bcBooks=new BroadcastChannel('fall-books');
+    bcBooks.onmessage=onBooks;
+    bcSignal=new BroadcastChannel('fall-signal');
+    bcSignal.onmessage=onSignal;
+    bcSignal.postMessage({source:TOOLNAME,type:'hello',prime:PRIME,version:VERSION,ts:now()});
+    bcBooks.postMessage({v:1,type:'sync.request',ts:now(),source:TOOLNAME,payload:{}});
+  }catch(e){console.warn('BroadcastChannel unavailable',e)}
+}
+const _bcastDebounced=debounce((type,payload)=>{
+  try{if(bcBooks)bcBooks.postMessage({v:1,type,ts:now(),source:TOOLNAME,payload})}catch(e){}
+},300);
+function broadcast(type,payload){_bcastDebounced(type,payload)}
+function broadcastNow(type,payload){
+  try{if(bcBooks)bcBooks.postMessage({v:1,type,ts:now(),source:TOOLNAME,payload})}catch(e){}
+}
+async function onBooks(e){
+  const m=e.data;if(!m||m.source===TOOLNAME)return;
+  if(m.type==='sync.request'){
+    const snap={
+      clients:state.clients,
+      advisers:state.advisers,
+      firm:state.firm
+    };
+    try{bcBooks.postMessage({v:1,type:'sync.snapshot',ts:now(),source:TOOLNAME,payload:snap})}catch(_){}
+    return;
+  }
+  if(m.type==='sync.snapshot'&&m.payload){
+    const snap=m.payload;
+    let changed=false;
+    if(snap.firm&&(!state.firm||(snap.firm.updatedAt||0)>(state.firm.updatedAt||0))){state.firm=snap.firm;await dbPut('firms',snap.firm);changed=true}
+    if(Array.isArray(snap.advisers)){
+      for(const a of snap.advisers){
+        const cur=state.advisers.find(x=>x.id===a.id);
+        if(!cur||(a.updatedAt||0)>(cur.updatedAt||0)){
+          if(cur)Object.assign(cur,a);else state.advisers.push(a);
+          await dbPut('advisers',a);changed=true;
+        }
+      }
+    }
+    if(Array.isArray(snap.clients)){
+      for(const c of snap.clients){
+        const cur=state.clients.find(x=>x.id===c.id);
+        if(!cur||(c.updatedAt||0)>(cur.updatedAt||0)){
+          if(cur)Object.assign(cur,c);else state.clients.push(c);
+          await dbPut('clients',c);changed=true;
+        }
+      }
+    }
+    if(changed)render();
+    return;
+  }
+  if((m.type==='client.created'||m.type==='client.updated')&&m.payload){
+    const c=m.payload;
+    const cur=state.clients.find(x=>x.id===c.id);
+    if(!cur||(c.updatedAt||0)>(cur.updatedAt||0)){
+      if(cur)Object.assign(cur,c);else state.clients.push(c);
+      await dbPut('clients',c);render();
+    }
+    return;
+  }
+  if(m.type==='adviser.updated'&&m.payload){
+    const a=m.payload;
+    const cur=state.advisers.find(x=>x.id===a.id);
+    if(!cur||(a.updatedAt||0)>(cur.updatedAt||0)){
+      if(cur)Object.assign(cur,a);else state.advisers.push(a);
+      await dbPut('advisers',a);render();
+    }
+    return;
+  }
+  if(m.type==='firm.updated'&&m.payload){
+    state.firm=m.payload;await dbPut('firms',m.payload);render();return;
+  }
+  if(m.type==='psc.fetched'&&m.payload&&m.payload.companyNo){
+    const rec={id:m.payload.companyNo,...m.payload,fetchedAt:now()};
+    await dbPut('pscCache',rec);
+    const idx=state.pscCache.findIndex(x=>x.id===rec.id);
+    if(idx>=0)state.pscCache[idx]=rec;else state.pscCache.push(rec);
+    render();
+  }
+}
+function onSignal(e){
+  const m=e.data;if(!m||m.source===TOOLNAME)return;
+  if(m.type==='ping'&&bcSignal)bcSignal.postMessage({source:TOOLNAME,type:'pong',prime:PRIME,version:VERSION,ts:now()});
+}
+
+// ════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════
+const state={
+  firm:null,
+  advisers:[],
+  clients:[],
+  pscCache:[],
+  audit:[],
+  settings:{tier:'T0',apiKey:'',apiModel:'claude-3-5-sonnet-20241022'},
+  activeAdviserId:'',
+  activeTab:'clients',
+  currentClientId:null,
+  wizardClientId:null,
+  wizardStep:1,
+  filterRisk:'all',
+  filterService:'all',
+};
+
+async function loadAll(){
+  const firms=await dbAll('firms');state.firm=firms[0]||null;
+  state.advisers=await dbAll('advisers');
+  state.clients=await dbAll('clients');
+  state.pscCache=await dbAll('pscCache');
+  state.audit=(await dbAll('audit')).sort((a,b)=>a.i-b.i);
+  const st=await dbGet('settings','main');if(st)state.settings=Object.assign(state.settings,st.v);
+  const aa=await dbGet('settings','activeAdviser');if(aa)state.activeAdviserId=aa.v;
+}
+
+async function saveSettings(){await dbPut('settings',{k:'main',v:state.settings})}
+async function saveActiveAdviser(){await dbPut('settings',{k:'activeAdviser',v:state.activeAdviserId})}
+
+// ════════════════════════════════════════════════════════════════
+// CLIENT SHAPE
+// ════════════════════════════════════════════════════════════════
+function newClientRecord(){
+  const id='cl_'+uuid();
+  return {
+    id,
+    firmId:state.firm?.id||'',
+    ts:now(),updatedAt:now(),archivedAt:null,createdAt:now(),
+    entityType:'limited-company',
+    // individuals
+    title:'',firstName:'',middleName:'',lastName:'',dob:'',nino:'',utr:'',
+    // entities
+    entityName:'',tradingName:'',companiesHouseNo:'',ctUtr:'',vatNumber:'',vatScheme:'none',payeReference:'',
+    accountingPeriodStart:'',accountingPeriodEnd:'',yearEnd:'',incorporationDate:'',shareCapital:'',
+    // contact
+    email:'',phone:'',
+    address:{line1:'',line2:'',city:'',region:'',postcode:'',country:'GB',since:''},
+    tradingAddress:{line1:'',line2:'',city:'',region:'',postcode:'',country:'GB'},
+    sameTradingAddress:true,
+    addressHistory:[],
+    // BO + PSC
+    beneficialOwners:[],
+    pscFromCompaniesHouse:[],
+    // services
+    servicesEngaged:[],
+    // engagement
+    engagement:{
+      startedAt:null,type:'ongoing',feeBasis:'fixed-monthly',feeAmount:0,feeFrequency:'monthly',
+      specialTerms:'',scopeNotes:'',nextReviewDue:null,
+      letterOfEngagementHash:'',letterOfEngagementSignedAt:null
+    },
+    // KYC / AML
+    kyc:{
+      status:'pending',riskGrade:'low',
+      pepFlag:false,pepDetails:'',
+      sanctionsStatus:'not-checked',sanctionsCheckedAt:null,sanctionsCheckedBy:'',
+      sourceOfFundsForServices:'',
+      natureAndPurposeOfBusiness:'',
+      expectedTransactionPatterns:'',
+      cashHeavyFlag:false,cashHeavyNotes:'',
+      highRiskGeoFlag:false,highRiskGeoNotes:'',
+      documentsHeld:[],
+      amlSupervisor:'HMRC',amlSupervisorRef:'',
+      lastReviewAt:null,nextReviewDue:null,
+      notes:''
+    },
+    adviserId:state.activeAdviserId||'',
+    deadlines:[],
+    notes:[],
+    links:{},
+    onboardingStatus:'in-progress' // in-progress | committed | archived
+  };
+}
+
+async function saveClient(c,action,reasoning){
+  c.updatedAt=now();
+  await dbPut('clients',c);
+  if(!state.clients.find(x=>x.id===c.id))state.clients.push(c);
+  await audit(action||'client.updated',c.id,reasoning||'',{id:c.id,entityType:c.entityType,entityName:c.entityName||((c.firstName||'')+' '+(c.lastName||''))});
+  broadcast(action==='client.created'?'client.created':'client.updated',c);
+}
+
+// ════════════════════════════════════════════════════════════════
+// AML risk grading (auto-suggest from inputs)
+// ════════════════════════════════════════════════════════════════
+function suggestRisk(c){
+  let score=0;
+  const k=c.kyc||{};
+  if(k.pepFlag)score+=3;
+  if(k.cashHeavyFlag)score+=2;
+  if(k.highRiskGeoFlag)score+=2;
+  if(c.entityType==='trust')score+=2;
+  if(c.entityType==='charity')score+=1;
+  if(c.entityType==='other')score+=1;
+  const numPSC=(c.beneficialOwners?.length||0)+(c.pscFromCompaniesHouse?.length||0);
+  if(numPSC>=4)score+=1;
+  if(k.sanctionsStatus==='match'||k.sanctionsStatus==='review')score+=3;
+  if(score>=4)return 'high';
+  if(score>=2)return 'medium';
+  return 'low';
+}
+
+function computeNextReview(grade){return addDays(now(),RISK_REVIEW_DAYS[grade]||365)}
+
+// ════════════════════════════════════════════════════════════════
+// DOC CAPTURE
+// ════════════════════════════════════════════════════════════════
+async function captureDoc(clientId,file,type,note,expDays){
+  const id='doc_'+uuid();
+  const hash=await sha256Blob(file);
+  const rec={
+    id,clientId,filename:file.name,type,mime:file.type||'',size:file.size,
+    sha256:hash,capturedAt:now(),note:note||'',blob:file
+  };
+  await dbPut('cddDocuments',rec);
+  return {
+    id,type,filename:file.name,blobRef:id,sha256:hash,size:file.size,mime:rec.mime,
+    capturedAt:rec.capturedAt,
+    expiresAt:expDays?addDays(rec.capturedAt,expDays):null,
+    verifiedBy:state.activeAdviserId||'',
+    note:note||''
+  };
+}
+
+async function getDocBlob(blobRef){
+  const r=await dbGet('cddDocuments',blobRef);
+  return r?.blob||null;
+}
+
+// ════════════════════════════════════════════════════════════════
+// RENDER ROOT
+// ════════════════════════════════════════════════════════════════
+function render(){
+  renderNav();
+  const v=$('#view');
+  if(!state.firm||!state.firm.setupCompletedAt){v.innerHTML=renderFirmSetup();bindFirmSetup();return}
+  if(state.advisers.length===0){v.innerHTML=renderAdviserBoot();bindAdviserBoot();return}
+  if(!state.activeAdviserId)state.activeAdviserId=state.advisers[0].id;
+  if(state.currentClientId){v.innerHTML=renderClientDetail();bindClientDetail();return}
+  if(state.wizardClientId){v.innerHTML=renderWizard();bindWizard();return}
+  switch(state.activeTab){
+    case 'clients':v.innerHTML=renderClientsList();bindClientsList();break;
+    case 'dashboard':v.innerHTML=renderDashboard();break;
+    case 'psc':v.innerHTML=renderPSC();bindPSC();break;
+    case 'firm':v.innerHTML=renderFirm();bindFirm();break;
+    case 'advisers':v.innerHTML=renderAdvisers();bindAdvisers();break;
+    case 'qa':v.innerHTML=renderQA();bindQA();break;
+    default:v.innerHTML=renderClientsList();bindClientsList();
+  }
+}
+
+function renderNav(){
+  const nav=$('#nav');
+  nav.innerHTML=TABS.map(t=>{
+    const ct=t.id==='clients'?state.clients.filter(c=>!c.archivedAt).length:
+             t.id==='psc'?state.pscCache.length:
+             t.id==='advisers'?state.advisers.length:'';
+    return `<button class="${state.activeTab===t.id?'active':''}" onclick="setTab('${t.id}')">${t.label}${ct!==''&&ct>0?'<span class="tcount">'+ct+'</span>':''}</button>`;
+  }).join('');
+  $('#tierBadge').textContent=state.settings.tier;
+  $('#tierBadge').className='tool-btn'+(state.settings.tier!=='T0'?' t3':'');
+}
+
+function setTab(t){state.activeTab=t;state.currentClientId=null;state.wizardClientId=null;render()}
+
+// ════════════════════════════════════════════════════════════════
+// FIRM SETUP (first launch)
+// ════════════════════════════════════════════════════════════════
+function renderFirmSetup(){
+  return `
+  <div class="disclaimer"><strong>◊ FallBooksOnboard — first launch.</strong> Set up your accountancy practice. This data lives only on this device (IndexedDB). Nothing is sent anywhere. You can import a snapshot from <code>fallbooks</code> or any sibling tool via the mesh.</div>
+  <div class="wizard">
+    <div class="wizard-body">
+      <h3>Firm setup</h3>
+      <div class="step-sub">All four <code>fallbooks</code> bundle tools share this record via <code>BroadcastChannel('fall-books')</code>.</div>
+      <div class="row">
+        <div class="field"><label>Firm name <span class="req">*</span></label><input id="fs_name" placeholder="Patel &amp; Co Accountants Ltd"></div>
+        <div class="field"><label>Trading name</label><input id="fs_trading" placeholder=""></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Practice type</label>
+          <select id="fs_ptype">
+            <option value="sole-practitioner">Sole Practitioner</option>
+            <option value="partnership">Partnership</option>
+            <option value="llp">LLP</option>
+            <option value="limited-company" selected>Limited Company</option>
+          </select>
+        </div>
+        <div class="field"><label>Companies House no</label><input id="fs_chno" placeholder="12345678"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Professional body</label>
+          <select id="fs_pb">${PROF_BODIES.map(p=>`<option value="${p}">${p}</option>`).join('')}</select>
+        </div>
+        <div class="field"><label>Practising cert no</label><input id="fs_pc" placeholder=""></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>AML supervisor <span class="req">*</span></label>
+          <select id="fs_aml">${AML_SUPERVISORS.map(s=>`<option value="${s}">${s}</option>`).join('')}</select>
+        </div>
+        <div class="field"><label>AML supervisor ref</label><input id="fs_amlref"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>HMRC agent ref (64-8)</label><input id="fs_agentref"></div>
+        <div class="field"><label>VAT number</label><input id="fs_vat"></div>
+      </div>
+      <div class="field"><label>Registered address — line 1</label><input id="fs_a1"></div>
+      <div class="row">
+        <div class="field"><label>City</label><input id="fs_city"></div>
+        <div class="field"><label>Postcode</label><input id="fs_pc2"></div>
+      </div>
+      <div class="wizard-foot">
+        <span></span>
+        <button class="btn primary" id="fs_save">Save firm &amp; continue &rarr;</button>
+      </div>
+    </div>
+  </div>`;
+}
+function bindFirmSetup(){
+  $('#fs_save').onclick=async()=>{
+    const name=$('#fs_name').value.trim();
+    if(!name){toast('Firm name required','warn');return}
+    const f={
+      id:'fm_'+uuid(),
+      createdAt:now(),updatedAt:now(),
+      name,
+      tradingName:$('#fs_trading').value.trim(),
+      practiceType:$('#fs_ptype').value,
+      professionalBody:$('#fs_pb').value,
+      practiceCertNo:$('#fs_pc').value.trim(),
+      amlSupervisor:$('#fs_aml').value,
+      amlSupervisorRef:$('#fs_amlref').value.trim(),
+      hmrcAgentRef:$('#fs_agentref').value.trim(),
+      companiesHouseNo:$('#fs_chno').value.trim(),
+      vatNumber:$('#fs_vat').value.trim(),
+      registeredAddress:{
+        line1:$('#fs_a1').value.trim(),line2:'',
+        city:$('#fs_city').value.trim(),
+        postcode:$('#fs_pc2').value.trim(),country:'GB'
+      },
+      piInsurer:'',piPolicyNo:'',piExpiresAt:null,
+      cqbeStatus:'',
+      brandColor:'#8b1a1a',
+      setupCompletedAt:now()
+    };
+    state.firm=f;await dbPut('firms',f);
+    await audit('firm.created','','Firm record initialised',{id:f.id,name:f.name});
+    broadcastNow('firm.updated',f);
+    toast('Firm saved · now add an adviser','success');
+    render();
+  };
+}
+
+// ────────────────────────────────────────────────────────────────
+// ADVISER BOOT
+// ────────────────────────────────────────────────────────────────
+function renderAdviserBoot(){
+  return `
+  <div class="wizard">
+    <div class="wizard-body">
+      <h3>Add the first adviser / practitioner</h3>
+      <div class="step-sub">This is the person logging in. Every audit-chain entry is signed with their adviser ID.</div>
+      <div class="row">
+        <div class="field"><label>Name <span class="req">*</span></label><input id="ad_name" placeholder="Faye Patel"></div>
+        <div class="field"><label>Email</label><input id="ad_email" type="email"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Professional body</label>
+          <select id="ad_pb">${PROF_BODIES.map(p=>`<option value="${p}">${p}</option>`).join('')}</select>
+        </div>
+        <div class="field"><label>Membership no</label><input id="ad_mno"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Practising cert active</label>
+          <select id="ad_pca"><option value="true">Yes</option><option value="false">No</option></select>
+        </div>
+        <div class="field"><label>Practising cert expires</label><input id="ad_pcexp" type="date"></div>
+      </div>
+      <div class="wizard-foot">
+        <span></span>
+        <button class="btn primary" id="ad_save">Save adviser &amp; enter app &rarr;</button>
+      </div>
+    </div>
+  </div>`;
+}
+function bindAdviserBoot(){
+  $('#ad_save').onclick=async()=>{
+    const name=$('#ad_name').value.trim();
+    if(!name){toast('Adviser name required','warn');return}
+    const a={
+      id:'ad_'+uuid(),
+      firmId:state.firm.id,
+      createdAt:now(),updatedAt:now(),archivedAt:null,
+      name,
+      email:$('#ad_email').value.trim(),
+      phone:'',
+      professionalBody:$('#ad_pb').value,
+      membershipNo:$('#ad_mno').value.trim(),
+      practisingCert:{active:$('#ad_pca').value==='true',expiresAt:$('#ad_pcexp').value?Date.parse($('#ad_pcexp').value):null},
+      cpdHoursThisYear:0,
+      status:'active',startedAt:now(),leftAt:null
+    };
+    state.advisers.push(a);state.activeAdviserId=a.id;
+    await dbPut('advisers',a);await saveActiveAdviser();
+    await audit('adviser.created','','First adviser registered',{id:a.id,name:a.name});
+    broadcastNow('adviser.updated',a);
+    toast('Welcome '+name,'success');
+    seedDemoIfEmpty();
+    render();
+  };
+}
+
+async function seedDemoIfEmpty(){
+  if(state.clients.length>0)return;
+  const c=newClientRecord();
+  c.entityType='limited-company';
+  c.entityName='DEMO · Marcus Osei Trading Ltd · overwrite me';
+  c.tradingName='Marcus Osei Trading';
+  c.companiesHouseNo='12345678';
+  c.ctUtr='1234567890';
+  c.vatNumber='GB123456789';
+  c.vatScheme='standard';
+  c.incorporationDate='2019-04-12';
+  c.accountingPeriodStart='2025-04-01';
+  c.accountingPeriodEnd='2026-03-31';
+  c.yearEnd='03-31';
+  c.shareCapital='100';
+  c.email='marcus@demo.invalid';
+  c.phone='+44 7700 900100';
+  c.address={line1:'12 Demo Street',line2:'',city:'London',region:'England',postcode:'E1 6AN',country:'GB',since:'2019-04-12'};
+  c.tradingAddress=Object.assign({},c.address);
+  c.beneficialOwners=[{name:'Marcus Osei',dob:'1985-07-21',address:'12 Demo Street, London E1 6AN',ownershipPct:100,controlNotes:'Sole director and 100% shareholder'}];
+  c.pscFromCompaniesHouse=[{name:'Marcus Osei',natureOfControl:'ownership-of-shares-75-to-100-percent',dob:'1985-07',nationality:'British'}];
+  c.servicesEngaged=['accounts','ct','vat','payroll','companies-house-filings'];
+  c.engagement={
+    startedAt:now(),type:'ongoing',feeBasis:'fixed-monthly',feeAmount:250,feeFrequency:'monthly',
+    specialTerms:'Includes year-end accounts, CT600, quarterly VAT, monthly payroll for 1 director.',
+    scopeNotes:'Excludes tax investigation work, R&D claims, share scheme advice.',
+    nextReviewDue:addDays(now(),365),
+    letterOfEngagementHash:'(generated on commit)',letterOfEngagementSignedAt:now()
+  };
+  c.kyc.status='verified';
+  c.kyc.riskGrade='low';
+  c.kyc.pepFlag=false;c.kyc.sanctionsStatus='clear';c.kyc.sanctionsCheckedAt=now();
+  c.kyc.sourceOfFundsForServices='Operating company revenue, paid by direct debit monthly.';
+  c.kyc.natureAndPurposeOfBusiness='Import/export of building hardware (B2B). Customers UK + EU. Annual turnover ~£420k.';
+  c.kyc.expectedTransactionPatterns='~30 invoices/month outbound, ~80 inbound. No cash. All bank/card.';
+  c.kyc.amlSupervisor='ICAEW';c.kyc.amlSupervisorRef='—';
+  c.kyc.lastReviewAt=now();c.kyc.nextReviewDue=addDays(now(),365);
+  c.adviserId=state.activeAdviserId;
+  c.onboardingStatus='committed';
+  c.engagement.letterOfEngagementHash=await sha256(JSON.stringify({id:c.id,scope:c.servicesEngaged,fee:c.engagement.feeAmount}));
+  await saveClient(c,'client.created','Demo client seeded — overwrite or delete');
+}
+
+// ════════════════════════════════════════════════════════════════
+// CLIENTS LIST
+// ════════════════════════════════════════════════════════════════
+function renderClientsList(){
+  const list=state.clients.filter(c=>!c.archivedAt);
+  const filtered=list.filter(c=>{
+    if(state.filterRisk!=='all'&&(c.kyc?.riskGrade||'low')!==state.filterRisk)return false;
+    if(state.filterService!=='all'&&!(c.servicesEngaged||[]).includes(state.filterService))return false;
+    return true;
+  });
+  return `
+  <div class="disclaimer">${disclaimerText()}</div>
+  <div class="section-h">
+    <div><h2>Clients</h2><div class="sub">${list.length} active · ${state.clients.filter(c=>c.archivedAt).length} archived</div></div>
+    <div class="actions">
+      <button class="btn ghost" onclick="exportSnapshot()">Export</button>
+      <button class="btn ghost" onclick="openModal('import')">Import</button>
+      <button class="btn primary" onclick="newClient()">+ New client onboarding</button>
+    </div>
+  </div>
+  <div class="chip-row">
+    <span class="chip ${state.filterRisk==='all'?'active':''}" onclick="state.filterRisk='all';render()">all risk</span>
+    <span class="chip ${state.filterRisk==='low'?'active':''}" onclick="state.filterRisk='low';render()">low</span>
+    <span class="chip ${state.filterRisk==='medium'?'active':''}" onclick="state.filterRisk='medium';render()">medium</span>
+    <span class="chip ${state.filterRisk==='high'?'active':''}" onclick="state.filterRisk='high';render()">high</span>
+  </div>
+  <div class="chip-row">
+    <span class="chip ${state.filterService==='all'?'active':''}" onclick="state.filterService='all';render()">all services</span>
+    ${SERVICES.map(s=>`<span class="chip ${state.filterService===s.id?'active':''}" onclick="state.filterService='${s.id}';render()">${s.label}</span>`).join('')}
+  </div>
+  ${list.length===0?`<div class="empty"><div class="big">No clients yet</div><div class="small">Start your first onboarding to capture CDD, PSC and engagement terms.</div><button class="btn primary" onclick="newClient()">Begin onboarding</button></div>`:
+  filtered.length===0?`<div class="empty"><div class="small">No clients match the current filters.</div></div>`:
+  `<table>
+    <thead><tr><th>Name</th><th>Type</th><th>Status</th><th>Risk</th><th>Services</th><th>Adviser</th><th>Next AML review</th></tr></thead>
+    <tbody>${filtered.map(c=>clientRow(c)).join('')}</tbody>
+  </table>`}
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME} · schema v${SCHEMA_V} · fall-books mesh</div>`;
+}
+function clientRow(c){
+  const name=esc(displayName(c));
+  const etype=ENTITY_TYPES.find(e=>e.id===c.entityType)?.label||c.entityType;
+  const risk=c.kyc?.riskGrade||'low';
+  const status=c.onboardingStatus||'in-progress';
+  const statusTag=status==='committed'?'<span class="tag green">committed</span>':'<span class="tag amber">draft</span>';
+  const adv=state.advisers.find(a=>a.id===c.adviserId)?.name||'—';
+  const next=c.kyc?.nextReviewDue?fmtDate(c.kyc.nextReviewDue):'—';
+  const overdue=c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now();
+  const due30=c.kyc?.nextReviewDue&&!overdue&&c.kyc.nextReviewDue<addDays(now(),30);
+  const svcs=(c.servicesEngaged||[]).slice(0,3).map(s=>SERVICES.find(x=>x.id===s)?.label.split(' ')[0]||s).join(', ')+((c.servicesEngaged||[]).length>3?'…':'');
+  return `<tr class="row-link" onclick="openClient('${c.id}')">
+    <td><strong>${name}</strong></td>
+    <td>${esc(etype)}</td>
+    <td>${statusTag}</td>
+    <td><span class="risk-pill risk-${risk}">${risk}</span></td>
+    <td>${esc(svcs||'—')}</td>
+    <td>${esc(adv)}</td>
+    <td class="${overdue?'r':''}">${overdue?'<span class="tag ox">overdue '+next+'</span>':due30?'<span class="tag amber">'+next+'</span>':next}</td>
+  </tr>`;
+}
+function displayName(c){
+  if(ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind){
+    return [c.title,c.firstName,c.middleName,c.lastName].filter(Boolean).join(' ')||'(unnamed)';
+  }
+  return c.entityName||'(unnamed entity)';
+}
+function bindClientsList(){}
+
+// ════════════════════════════════════════════════════════════════
+// WIZARD
+// ════════════════════════════════════════════════════════════════
+const STEPS=[
+  {n:1,id:'entity',label:'Entity'},
+  {n:2,id:'identity',label:'Identity'},
+  {n:3,id:'contact',label:'Contact'},
+  {n:4,id:'psc',label:'BO/PSC'},
+  {n:5,id:'services',label:'Services'},
+  {n:6,id:'cdd',label:'CDD Core'},
+  {n:7,id:'sof',label:'SoF'},
+  {n:8,id:'pep',label:'PEP/Sanctions'},
+  {n:9,id:'docs',label:'Docs'},
+  {n:10,id:'engagement',label:'Engagement'},
+  {n:11,id:'commit',label:'Commit'},
+];
+
+function newClient(){
+  const c=newClientRecord();
+  state.clients.push(c);
+  state.wizardClientId=c.id;
+  state.wizardStep=1;
+  state.currentClientId=null;
+  audit('client.draft','','New client draft started',{id:c.id});
+  dbPut('clients',c);
+  render();
+}
+
+function getWizClient(){return state.clients.find(c=>c.id===state.wizardClientId)}
+
+function renderWizard(){
+  const c=getWizClient();if(!c)return renderClientsList();
+  const isInd=ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind;
+  return `
+  <div class="section-h">
+    <div><h2>New client onboarding</h2><div class="sub">${esc(displayName(c))||'draft'} · step ${state.wizardStep} of ${STEPS.length}</div></div>
+    <div class="actions">
+      <button class="btn ghost" onclick="cancelWizard()">&larr; back to list</button>
+    </div>
+  </div>
+  <div class="wizard">
+    <div class="wizard-steps">${STEPS.map(s=>`<div class="wstep ${state.wizardStep===s.n?'active':state.wizardStep>s.n?'done':''}" onclick="gotoStep(${s.n})"><span class="n">${s.n}</span>${s.label}</div>`).join('')}</div>
+    <div class="wizard-body">${wizardStep(c,isInd)}</div>
+    <div class="wizard-foot">
+      <button class="btn ghost" ${state.wizardStep===1?'disabled':''} onclick="wizPrev()">&larr; previous</button>
+      ${state.wizardStep<STEPS.length?`<button class="btn primary" onclick="wizNext()">next &rarr;</button>`:`<button class="btn primary" id="wiz_commit">Commit BookClient &rarr;</button>`}
+    </div>
+  </div>
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME}</div>`;
+}
+
+function wizardStep(c,isInd){
+  switch(state.wizardStep){
+    case 1: return stepEntity(c);
+    case 2: return stepIdentity(c,isInd);
+    case 3: return stepContact(c);
+    case 4: return stepPSC(c);
+    case 5: return stepServices(c);
+    case 6: return stepCDD(c);
+    case 7: return stepSoF(c);
+    case 8: return stepPEP(c);
+    case 9: return stepDocs(c,isInd);
+    case 10: return stepEngagement(c);
+    case 11: return stepCommit(c);
+  }
+  return '';
+}
+
+function stepEntity(c){
+  return `
+    <h3>Step 1 · Entity type</h3>
+    <div class="step-sub">Choose the legal form of the new client. This drives every downstream question — identity, beneficial ownership, deadlines, AML risk.</div>
+    <div class="checkgrid">
+      ${ENTITY_TYPES.map(e=>`<label><input type="radio" name="etype" value="${e.id}" ${c.entityType===e.id?'checked':''}><span>${e.label}</span></label>`).join('')}
+    </div>
+    <div class="field" style="margin-top:18px"><label>Optional descriptor</label><input id="w_desc" value="${esc(c.tradingName||'')}" placeholder="e.g. ‘Family farm holding company’"></div>
+  `;
+}
+function stepIdentity(c,isInd){
+  if(isInd){
+    return `
+    <h3>Step 2 · Identity — individual</h3>
+    <div class="step-sub">Full legal name as on photo ID. NINO is required for any UK SA work.</div>
+    <div class="row3">
+      <div class="field"><label>Title</label><input id="w_title" value="${esc(c.title)}" placeholder="Mr / Mrs / Dr"></div>
+      <div class="field"><label>First name <span class="req">*</span></label><input id="w_fn" value="${esc(c.firstName)}"></div>
+      <div class="field"><label>Middle name(s)</label><input id="w_mn" value="${esc(c.middleName)}"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Last name <span class="req">*</span></label><input id="w_ln" value="${esc(c.lastName)}"></div>
+      <div class="field"><label>Date of birth <span class="req">*</span></label><input id="w_dob" type="date" value="${esc(c.dob)}"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>NINO</label><input id="w_nino" value="${esc(c.nino)}" placeholder="AB123456C"></div>
+      <div class="field"><label>UTR</label><input id="w_utr" value="${esc(c.utr)}" placeholder="1234567890"></div>
+    </div>
+    <div class="field"><label>Trading name (if sole trader)</label><input id="w_trading" value="${esc(c.tradingName)}"></div>
+    `;
+  }
+  return `
+    <h3>Step 2 · Identity — entity</h3>
+    <div class="step-sub">Legal name as on certificate of incorporation. Verify Companies House number on gov.uk.</div>
+    <div class="row">
+      <div class="field"><label>Legal entity name <span class="req">*</span></label><input id="w_ename" value="${esc(c.entityName)}"></div>
+      <div class="field"><label>Trading name</label><input id="w_trading" value="${esc(c.tradingName)}"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Companies House no</label><input id="w_chno" value="${esc(c.companiesHouseNo)}" placeholder="12345678">
+        ${c.companiesHouseNo?`<div class="hint"><a href="https://find-and-update.company-information.service.gov.uk/company/${esc(c.companiesHouseNo)}" target="_blank" rel="noopener noreferrer">↗ Open on Companies House</a></div>`:''}
+      </div>
+      <div class="field"><label>Incorporation date</label><input id="w_inc" type="date" value="${esc(c.incorporationDate)}"></div>
+    </div>
+    <div class="row3">
+      <div class="field"><label>CT UTR</label><input id="w_ctutr" value="${esc(c.ctUtr)}"></div>
+      <div class="field"><label>VAT number</label><input id="w_vat" value="${esc(c.vatNumber)}"></div>
+      <div class="field"><label>VAT scheme</label>
+        <select id="w_vatscheme">${VAT_SCHEMES.map(v=>`<option value="${v.id}" ${c.vatScheme===v.id?'selected':''}>${v.label}</option>`).join('')}</select>
+      </div>
+    </div>
+    <div class="row3">
+      <div class="field"><label>PAYE ref</label><input id="w_paye" value="${esc(c.payeReference)}" placeholder="123/AB12345"></div>
+      <div class="field"><label>Accounting period end</label><input id="w_ape" type="date" value="${esc(c.accountingPeriodEnd)}"></div>
+      <div class="field"><label>Year end (MM-DD)</label><input id="w_ye" value="${esc(c.yearEnd)}" placeholder="03-31"></div>
+    </div>
+    <div class="field"><label>Issued share capital</label><input id="w_sc" value="${esc(c.shareCapital)}" placeholder="100 ordinary £1 shares"></div>
+  `;
+}
+function stepContact(c){
+  return `
+    <h3>Step 3 · Contact &amp; address</h3>
+    <div class="step-sub">Registered office must match Companies House. Trading address may differ. Address history is required for full AML CDD.</div>
+    <div class="row">
+      <div class="field"><label>Email</label><input id="w_email" value="${esc(c.email)}" type="email"></div>
+      <div class="field"><label>Phone</label><input id="w_phone" value="${esc(c.phone)}"></div>
+    </div>
+    <h3 style="font-size:14px;margin-top:18px">Registered address</h3>
+    <div class="field"><label>Line 1</label><input id="w_a1" value="${esc(c.address.line1)}"></div>
+    <div class="row">
+      <div class="field"><label>Line 2</label><input id="w_a2" value="${esc(c.address.line2)}"></div>
+      <div class="field"><label>City</label><input id="w_acity" value="${esc(c.address.city)}"></div>
+    </div>
+    <div class="row3">
+      <div class="field"><label>Region</label>
+        <select id="w_aregion">${['','England','Wales','Scotland','Northern Ireland'].map(r=>`<option value="${r}" ${c.address.region===r?'selected':''}>${r||'—'}</option>`).join('')}</select>
+      </div>
+      <div class="field"><label>Postcode</label><input id="w_apc" value="${esc(c.address.postcode)}"></div>
+      <div class="field"><label>At this address since</label><input id="w_asince" type="date" value="${esc(c.address.since)}"></div>
+    </div>
+    <div class="field"><label><input type="checkbox" id="w_sameaddr" ${c.sameTradingAddress?'checked':''}>Trading address same as registered</label></div>
+    <div id="w_tradingbox" style="${c.sameTradingAddress?'display:none':''}">
+      <h3 style="font-size:14px;margin-top:8px">Trading address</h3>
+      <div class="field"><label>Line 1</label><input id="w_t1" value="${esc(c.tradingAddress.line1)}"></div>
+      <div class="row">
+        <div class="field"><label>City</label><input id="w_tcity" value="${esc(c.tradingAddress.city)}"></div>
+        <div class="field"><label>Postcode</label><input id="w_tpc" value="${esc(c.tradingAddress.postcode)}"></div>
+      </div>
+    </div>
+    <h3 style="font-size:14px;margin-top:14px">Address history <span class="help-pill">≥3 yrs for AML</span></h3>
+    <div id="addrhist">${(c.addressHistory||[]).map((h,i)=>addrHistRow(h,i)).join('')||'<div class="hint" style="font-family:var(--mono);font-size:11px;color:var(--cream-muted)">No history yet</div>'}</div>
+    <button class="btn sm ghost" onclick="addAddrHist()" style="margin-top:8px">+ add prior address</button>
+  `;
+}
+function addrHistRow(h,i){
+  return `<div class="doc-row" data-ahi="${i}">
+    <div class="dname">${esc(h.address||'(blank)')}</div>
+    <div class="dmeta">${esc(h.from||'?')} → ${esc(h.to||'?')}</div>
+    <button class="btn sm danger" onclick="rmAddrHist(${i})">×</button>
+  </div>`;
+}
+function stepPSC(c){
+  const isEntity=!ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind;
+  if(!isEntity){
+    return `<h3>Step 4 · Beneficial ownership</h3>
+    <div class="step-sub">For a sole trader / individual the BO is the client themselves. No PSC capture needed.</div>
+    <div class="banner info">Confirmed: <strong>${esc(displayName(c))}</strong> is the sole beneficial owner. No further BO/PSC steps for this entity type.</div>`;
+  }
+  return `
+    <h3>Step 4 · Beneficial ownership &amp; PSC</h3>
+    <div class="step-sub">Capture every individual with &gt;25% shares, &gt;25% voting rights, board control, or significant influence (MLR 2017 reg 5; PSC Regs 2016). Cross-check the Companies House PSC register.</div>
+    <h3 style="font-size:14px;margin-top:10px">Beneficial owners (firm-recorded)</h3>
+    <div id="bolist">${(c.beneficialOwners||[]).map((b,i)=>boRow(b,i)).join('')||'<div class="hint" style="font-family:var(--mono);font-size:11px;color:var(--cream-muted)">No BOs entered yet</div>'}</div>
+    <button class="btn sm ghost" onclick="addBO()" style="margin-top:8px">+ add beneficial owner</button>
+    <h3 style="font-size:14px;margin-top:18px">PSC register (mirrored from Companies House)</h3>
+    <div id="psclist">${(c.pscFromCompaniesHouse||[]).map((p,i)=>pscRow(p,i)).join('')||'<div class="hint" style="font-family:var(--mono);font-size:11px;color:var(--cream-muted)">No PSC entries yet</div>'}</div>
+    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+      <button class="btn sm ghost" onclick="addPSC()">+ add PSC manually</button>
+      <button class="btn sm ghost" onclick="importPSCcsv()">↥ import CSV</button>
+      ${c.companiesHouseNo?`<a class="btn sm" href="https://find-and-update.company-information.service.gov.uk/company/${esc(c.companiesHouseNo)}/persons-with-significant-control" target="_blank" rel="noopener noreferrer">↗ open PSC on CH</a>`:''}
+    </div>
+    <div class="hint" style="margin-top:8px">CSV columns: <code>name,natureOfControl,dob,nationality</code></div>
+  `;
+}
+function boRow(b,i){
+  return `<div class="psc-row">
+    <div class="pn">${esc(b.name||'(unnamed)')}<div class="dmeta">${esc(b.controlNotes||'')}</div></div>
+    <div class="dmeta">${esc(b.address||'')}</div>
+    <div class="pp">${esc(String(b.ownershipPct||'0'))}%</div>
+    <button class="btn sm danger" onclick="rmBO(${i})">×</button>
+  </div>`;
+}
+function pscRow(p,i){
+  return `<div class="psc-row">
+    <div class="pn">${esc(p.name||'(unnamed)')}<div class="dmeta">${esc(p.natureOfControl||'')}</div></div>
+    <div class="dmeta">${esc(p.dob||'')} · ${esc(p.nationality||'')}</div>
+    <div class="pp">PSC</div>
+    <button class="btn sm danger" onclick="rmPSC(${i})">×</button>
+  </div>`;
+}
+function stepServices(c){
+  return `
+    <h3>Step 5 · Services engaged</h3>
+    <div class="step-sub">Pick every service line the engagement covers. This drives downstream deadline tracking in <code>fallbookspractice</code> and SA/CT/VAT prep in <code>fallbooks</code>.</div>
+    <div class="checkgrid">
+      ${SERVICES.map(s=>`<label><input type="checkbox" name="svc" value="${s.id}" ${(c.servicesEngaged||[]).includes(s.id)?'checked':''}><span>${s.label}</span></label>`).join('')}
+    </div>
+  `;
+}
+function stepCDD(c){
+  return `
+    <h3>Step 6 · CDD core — risk grade</h3>
+    <div class="step-sub">Standard CDD per MLR 2017 reg 28. Tick anything that applies — the system suggests a risk grade you can override.</div>
+    <div class="field"><label>Sector / industry note</label><input id="w_sector" value="${esc(c.kyc.cashHeavyNotes||'')}" placeholder="e.g. ‘Restaurant — primarily cash takings’"></div>
+    <div class="checkgrid">
+      <label><input type="checkbox" id="w_cash" ${c.kyc.cashHeavyFlag?'checked':''}><span>Operates in cash-intensive sector</span></label>
+      <label><input type="checkbox" id="w_geo" ${c.kyc.highRiskGeoFlag?'checked':''}><span>Operates in / from high-risk third country</span></label>
+    </div>
+    <div class="field" style="margin-top:12px"><label>High-risk geography notes (if any)</label><input id="w_geonote" value="${esc(c.kyc.highRiskGeoNotes||'')}" placeholder="Countries + nature of activity"></div>
+    <div class="row">
+      <div class="field"><label>Suggested risk grade</label>
+        <div style="padding:8px 0"><span class="risk-pill risk-${suggestRisk(c)}">${suggestRisk(c)}</span></div>
+        <div class="hint">Auto-computed from PEP / cash / geo / entity type / PSC count / sanctions hit.</div>
+      </div>
+      <div class="field"><label>Final risk grade <span class="req">*</span></label>
+        <select id="w_risk">
+          <option value="low" ${c.kyc.riskGrade==='low'?'selected':''}>low</option>
+          <option value="medium" ${c.kyc.riskGrade==='medium'?'selected':''}>medium</option>
+          <option value="high" ${c.kyc.riskGrade==='high'?'selected':''}>high</option>
+        </select>
+        <div class="hint">Override if your professional judgment differs. Reasoning logged in audit chain.</div>
+      </div>
+    </div>
+    <div class="field"><label>Risk grade reasoning</label><textarea id="w_riskreason" placeholder="One or two sentences — why this grade?">${esc(c.kyc.notes||'')}</textarea></div>
+  `;
+}
+function stepSoF(c){
+  return `
+    <h3>Step 7 · Source of funds &amp; business profile</h3>
+    <div class="step-sub">MLR 2017 reg 28(4): obtain information on the purpose &amp; intended nature of the business relationship, source of funds for fees, and the expected pattern of transactions.</div>
+    <div class="field"><label>Source of funds for our fees <span class="req">*</span></label>
+      <textarea id="w_sof" placeholder="e.g. ‘Paid by direct debit from company current account at Lloyds funded by trading revenue’">${esc(c.kyc.sourceOfFundsForServices)}</textarea>
+    </div>
+    <div class="field"><label>Nature &amp; purpose of business <span class="req">*</span></label>
+      <textarea id="w_nature" placeholder="What does the business actually do? Who are customers? Geography? Annual turnover?">${esc(c.kyc.natureAndPurposeOfBusiness)}</textarea>
+    </div>
+    <div class="field"><label>Expected transaction patterns</label>
+      <textarea id="w_pattern" placeholder="Volume of invoices/month. Cash component %. Payment methods. Any seasonality.">${esc(c.kyc.expectedTransactionPatterns)}</textarea>
+    </div>
+  `;
+}
+function stepPEP(c){
+  return `
+    <h3>Step 8 · PEP &amp; sanctions</h3>
+    <div class="step-sub">MLR 2017 reg 35 (PEP) &amp; SAMLA 2018 (sanctions). Screen the client, all BOs and PSCs. Record sources + date.</div>
+    <div class="checkgrid">
+      <label><input type="checkbox" id="w_pep" ${c.kyc.pepFlag?'checked':''}><span>Client, BO or PSC is a PEP / RCA</span></label>
+    </div>
+    <div class="field" style="margin-top:12px"><label>PEP details (if flagged)</label>
+      <textarea id="w_pepdetails" placeholder="Name · function · country · date assumed/ceased · family/associate relationship">${esc(c.kyc.pepDetails)}</textarea>
+    </div>
+    <div class="field"><label>Sanctions check status <span class="req">*</span></label>
+      <select id="w_san">
+        <option value="not-checked" ${c.kyc.sanctionsStatus==='not-checked'?'selected':''}>not-checked</option>
+        <option value="clear" ${c.kyc.sanctionsStatus==='clear'?'selected':''}>clear</option>
+        <option value="review" ${c.kyc.sanctionsStatus==='review'?'selected':''}>review (possible match)</option>
+        <option value="match" ${c.kyc.sanctionsStatus==='match'?'selected':''}>match (do not onboard)</option>
+      </select>
+    </div>
+    <div class="banner info">Recommended sanctions sources (open in new tab):
+      <ul style="margin:6px 0 0 18px;font-size:11px">
+        <li><a href="https://www.gov.uk/government/publications/financial-sanctions-consolidated-list-of-targets" target="_blank" rel="noopener noreferrer">OFSI Consolidated List (HM Treasury)</a></li>
+        <li><a href="https://www.gov.uk/government/publications/the-uk-sanctions-list" target="_blank" rel="noopener noreferrer">UK Sanctions List (FCDO)</a></li>
+        <li><a href="https://main.un.org/securitycouncil/en/content/un-sc-consolidated-list" target="_blank" rel="noopener noreferrer">UN Consolidated List</a></li>
+      </ul>
+    </div>
+  `;
+}
+function stepDocs(c,isInd){
+  const set=isInd?DOC_TYPES_INDIV:DOC_TYPES_ENTITY;
+  return `
+    <h3>Step 9 · Documents</h3>
+    <div class="step-sub">Capture photo ID, proof of address, and entity proofs. Each file is SHA-256 hashed and stored in IDB Blob — never sent anywhere.</div>
+    <div class="field"><label>Doc type</label>
+      <select id="w_doctype">${set.map(d=>`<option value="${d.id}" data-exp="${d.expDays||''}">${d.label}${d.expDays?' (exp '+Math.round(d.expDays/30)+'mo)':''}</option>`).join('')}</select>
+    </div>
+    <div class="field"><label>Note (optional)</label><input id="w_docnote" placeholder="e.g. ‘Original sighted in office 2026-06-18’"></div>
+    <div class="dz" id="dz">
+      <div class="icon">+</div>
+      <div class="label">Drop file or click to upload</div>
+      <input type="file" id="docFile" style="display:none">
+    </div>
+    <div class="doc-list" id="docList">${(c.kyc.documentsHeld||[]).map(d=>docListRow(d)).join('')}</div>
+  `;
+}
+function docListRow(d){
+  return `<div class="doc-row">
+    <div class="dtype">${esc(d.type)}</div>
+    <div class="dname">${esc(d.filename)}</div>
+    <div class="dmeta">${fmtDate(d.capturedAt)}${d.expiresAt?' · exp '+fmtDate(d.expiresAt):''}</div>
+    <div class="dhash" title="${esc(d.sha256)}">${esc((d.sha256||'').slice(0,12))}…</div>
+    <button class="btn sm ghost" onclick="dlDoc('${d.blobRef}','${esc(d.filename)}')">↓</button>
+    <button class="btn sm danger" onclick="rmDoc('${d.blobRef}')">×</button>
+  </div>`;
+}
+function stepEngagement(c){
+  return `
+    <h3>Step 10 · Engagement letter inputs</h3>
+    <div class="step-sub">These fields populate the engagement letter draft and are stored in <code>BookClient.engagement</code>. The letter draft will be auto-generated on commit and posted to <code>fallbookspaper</code> via the mesh.</div>
+    <div class="row">
+      <div class="field"><label>Engagement type</label>
+        <select id="w_etype">
+          <option value="ongoing" ${c.engagement.type==='ongoing'?'selected':''}>Ongoing</option>
+          <option value="one-off" ${c.engagement.type==='one-off'?'selected':''}>One-off</option>
+          <option value="transactional" ${c.engagement.type==='transactional'?'selected':''}>Transactional</option>
+        </select>
+      </div>
+      <div class="field"><label>Started at</label><input id="w_estart" type="date" value="${c.engagement.startedAt?fmtDate(c.engagement.startedAt):fmtDate(now())}"></div>
+    </div>
+    <div class="row3">
+      <div class="field"><label>Fee basis</label>
+        <select id="w_fbasis">${FEE_BASES.map(f=>`<option value="${f.id}" ${c.engagement.feeBasis===f.id?'selected':''}>${f.label}</option>`).join('')}</select>
+      </div>
+      <div class="field"><label>Fee amount £</label><input id="w_famt" type="number" min="0" step="0.01" value="${c.engagement.feeAmount||0}"></div>
+      <div class="field"><label>Frequency</label>
+        <select id="w_ffreq">
+          <option value="monthly" ${c.engagement.feeFrequency==='monthly'?'selected':''}>monthly</option>
+          <option value="quarterly" ${c.engagement.feeFrequency==='quarterly'?'selected':''}>quarterly</option>
+          <option value="annual" ${c.engagement.feeFrequency==='annual'?'selected':''}>annual</option>
+          <option value="per-job" ${c.engagement.feeFrequency==='per-job'?'selected':''}>per-job</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>Scope notes (what's INCLUDED)</label>
+      <textarea id="w_scope" placeholder="e.g. Year-end accounts, CT600 corporation tax return, four quarterly VAT returns, monthly payroll for up to 3 employees, annual confirmation statement.">${esc(c.engagement.scopeNotes)}</textarea>
+    </div>
+    <div class="field"><label>Special terms / exclusions</label>
+      <textarea id="w_special" placeholder="e.g. Excludes HMRC enquiry work, R&D claims, share scheme advice. Charged separately at hourly rate £150+VAT.">${esc(c.engagement.specialTerms)}</textarea>
+    </div>
+  `;
+}
+function stepCommit(c){
+  const isInd=ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind;
+  const numBO=(c.beneficialOwners||[]).length+(c.pscFromCompaniesHouse||[]).length;
+  const numDocs=(c.kyc.documentsHeld||[]).length;
+  const numSvcs=(c.servicesEngaged||[]).length;
+  const issues=[];
+  if(isInd&&!c.firstName)issues.push('Individual identity missing first name');
+  if(!isInd&&!c.entityName)issues.push('Entity name missing');
+  if(!isInd&&!c.companiesHouseNo&&c.entityType==='limited-company')issues.push('Companies House no missing for limited company');
+  if(numSvcs===0)issues.push('No services selected');
+  if(!isInd&&numBO===0)issues.push('No beneficial owners / PSC entered');
+  if(numDocs===0)issues.push('No CDD documents captured');
+  if(!c.kyc.sourceOfFundsForServices)issues.push('Source of funds for our fees not stated');
+  if(!c.kyc.natureAndPurposeOfBusiness)issues.push('Nature & purpose of business not stated');
+  if(c.kyc.sanctionsStatus==='not-checked')issues.push('Sanctions check not run');
+  if(c.kyc.sanctionsStatus==='match')issues.push('SANCTIONS MATCH — must not onboard');
+  return `
+    <h3>Step 11 · Confirm &amp; commit</h3>
+    <div class="step-sub">Review the BookClient about to be written to IDB and broadcast on <code>fall-books</code>. On commit: audit entry, engagement letter draft hash, deadlines seeded.</div>
+    ${issues.length?`<div class="banner warn"><strong>${issues.length} gap${issues.length>1?'s':''}:</strong><ul style="margin:6px 0 0 18px">${issues.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`:`<div class="banner success">All required fields populated. Ready to commit.</div>`}
+    <div class="grid-2">
+      <div class="card">
+        <h3>Identity</h3>
+        <div class="kpi"><span class="l">Type</span><span class="v brass">${esc(ENTITY_TYPES.find(e=>e.id===c.entityType)?.label||c.entityType)}</span></div>
+        <div class="kpi"><span class="l">Name</span><span class="v">${esc(displayName(c))}</span></div>
+        ${!isInd?`<div class="kpi"><span class="l">CH no</span><span class="v">${esc(c.companiesHouseNo||'—')}</span></div>`:''}
+        ${!isInd?`<div class="kpi"><span class="l">VAT scheme</span><span class="v">${esc(c.vatScheme||'—')}</span></div>`:''}
+        ${!isInd?`<div class="kpi"><span class="l">Year end</span><span class="v">${esc(c.yearEnd||'—')}</span></div>`:''}
+        ${isInd?`<div class="kpi"><span class="l">NINO</span><span class="v">${esc(c.nino||'—')}</span></div>`:''}
+      </div>
+      <div class="card">
+        <h3>AML / CDD</h3>
+        <div class="kpi"><span class="l">Risk grade</span><span class="v ${c.kyc.riskGrade==='high'?'red':c.kyc.riskGrade==='medium'?'amber':'green'}">${esc(c.kyc.riskGrade)}</span></div>
+        <div class="kpi"><span class="l">PEP flag</span><span class="v ${c.kyc.pepFlag?'amber':''}">${c.kyc.pepFlag?'yes':'no'}</span></div>
+        <div class="kpi"><span class="l">Sanctions</span><span class="v ${c.kyc.sanctionsStatus==='clear'?'green':c.kyc.sanctionsStatus==='match'?'red':'amber'}">${esc(c.kyc.sanctionsStatus)}</span></div>
+        <div class="kpi"><span class="l">Supervisor</span><span class="v">${esc(c.kyc.amlSupervisor)}</span></div>
+        <div class="kpi"><span class="l">Next review</span><span class="v">${fmtDate(computeNextReview(c.kyc.riskGrade))}</span></div>
+      </div>
+      <div class="card">
+        <h3>BO / PSC</h3>
+        <div class="kpi"><span class="l">Beneficial owners</span><span class="v">${(c.beneficialOwners||[]).length}</span></div>
+        <div class="kpi"><span class="l">PSC entries</span><span class="v">${(c.pscFromCompaniesHouse||[]).length}</span></div>
+      </div>
+      <div class="card">
+        <h3>Engagement</h3>
+        <div class="kpi"><span class="l">Services</span><span class="v">${numSvcs}</span></div>
+        <div class="kpi"><span class="l">Fee basis</span><span class="v">${esc(c.engagement.feeBasis)}</span></div>
+        <div class="kpi"><span class="l">Fee amount</span><span class="v brass">£${Number(c.engagement.feeAmount||0).toFixed(2)} ${esc(c.engagement.feeFrequency)}</span></div>
+        <div class="kpi"><span class="l">Documents</span><span class="v">${numDocs}</span></div>
+      </div>
+    </div>
+  `;
+}
+
+function bindWizard(){
+  const c=getWizClient();if(!c)return;
+  const step=state.wizardStep;
+  if(step===1){
+    document.querySelectorAll('input[name=etype]').forEach(r=>r.onchange=e=>{c.entityType=e.target.value});
+    $('#w_desc')&&($('#w_desc').oninput=e=>{c.tradingName=e.target.value});
+  }
+  if(step===2){
+    const isInd=ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind;
+    if(isInd){
+      $('#w_title').oninput=e=>{c.title=e.target.value};
+      $('#w_fn').oninput=e=>{c.firstName=e.target.value};
+      $('#w_mn').oninput=e=>{c.middleName=e.target.value};
+      $('#w_ln').oninput=e=>{c.lastName=e.target.value};
+      $('#w_dob').oninput=e=>{c.dob=e.target.value};
+      $('#w_nino').oninput=e=>{c.nino=e.target.value.toUpperCase()};
+      $('#w_utr').oninput=e=>{c.utr=e.target.value};
+      $('#w_trading').oninput=e=>{c.tradingName=e.target.value};
+    }else{
+      $('#w_ename').oninput=e=>{c.entityName=e.target.value};
+      $('#w_trading').oninput=e=>{c.tradingName=e.target.value};
+      $('#w_chno').oninput=e=>{c.companiesHouseNo=e.target.value.replace(/\s+/g,'')};
+      $('#w_inc').oninput=e=>{c.incorporationDate=e.target.value};
+      $('#w_ctutr').oninput=e=>{c.ctUtr=e.target.value};
+      $('#w_vat').oninput=e=>{c.vatNumber=e.target.value};
+      $('#w_vatscheme').onchange=e=>{c.vatScheme=e.target.value};
+      $('#w_paye').oninput=e=>{c.payeReference=e.target.value};
+      $('#w_ape').oninput=e=>{c.accountingPeriodEnd=e.target.value;if(e.target.value){const d=new Date(e.target.value);if(!isNaN(d))c.yearEnd=String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0')}};
+      $('#w_ye').oninput=e=>{c.yearEnd=e.target.value};
+      $('#w_sc').oninput=e=>{c.shareCapital=e.target.value};
+    }
+  }
+  if(step===3){
+    $('#w_email').oninput=e=>{c.email=e.target.value};
+    $('#w_phone').oninput=e=>{c.phone=e.target.value};
+    $('#w_a1').oninput=e=>{c.address.line1=e.target.value};
+    $('#w_a2').oninput=e=>{c.address.line2=e.target.value};
+    $('#w_acity').oninput=e=>{c.address.city=e.target.value};
+    $('#w_aregion').onchange=e=>{c.address.region=e.target.value};
+    $('#w_apc').oninput=e=>{c.address.postcode=e.target.value.toUpperCase()};
+    $('#w_asince').oninput=e=>{c.address.since=e.target.value};
+    $('#w_sameaddr').onchange=e=>{c.sameTradingAddress=e.target.checked;$('#w_tradingbox').style.display=e.target.checked?'none':''};
+    $('#w_t1')&&($('#w_t1').oninput=e=>{c.tradingAddress.line1=e.target.value});
+    $('#w_tcity')&&($('#w_tcity').oninput=e=>{c.tradingAddress.city=e.target.value});
+    $('#w_tpc')&&($('#w_tpc').oninput=e=>{c.tradingAddress.postcode=e.target.value.toUpperCase()});
+  }
+  if(step===5){
+    document.querySelectorAll('input[name=svc]').forEach(r=>r.onchange=e=>{
+      const v=e.target.value;
+      const set=new Set(c.servicesEngaged||[]);
+      if(e.target.checked)set.add(v);else set.delete(v);
+      c.servicesEngaged=[...set];
+    });
+  }
+  if(step===6){
+    $('#w_sector').oninput=e=>{c.kyc.cashHeavyNotes=e.target.value};
+    $('#w_cash').onchange=e=>{c.kyc.cashHeavyFlag=e.target.checked;renderWizardOnly()};
+    $('#w_geo').onchange=e=>{c.kyc.highRiskGeoFlag=e.target.checked;renderWizardOnly()};
+    $('#w_geonote').oninput=e=>{c.kyc.highRiskGeoNotes=e.target.value};
+    $('#w_risk').onchange=e=>{c.kyc.riskGrade=e.target.value};
+    $('#w_riskreason').oninput=e=>{c.kyc.notes=e.target.value};
+  }
+  if(step===7){
+    $('#w_sof').oninput=e=>{c.kyc.sourceOfFundsForServices=e.target.value};
+    $('#w_nature').oninput=e=>{c.kyc.natureAndPurposeOfBusiness=e.target.value};
+    $('#w_pattern').oninput=e=>{c.kyc.expectedTransactionPatterns=e.target.value};
+  }
+  if(step===8){
+    $('#w_pep').onchange=e=>{c.kyc.pepFlag=e.target.checked};
+    $('#w_pepdetails').oninput=e=>{c.kyc.pepDetails=e.target.value};
+    $('#w_san').onchange=e=>{c.kyc.sanctionsStatus=e.target.value;c.kyc.sanctionsCheckedAt=now();c.kyc.sanctionsCheckedBy=state.activeAdviserId};
+  }
+  if(step===9){
+    const dz=$('#dz'),f=$('#docFile');
+    dz.onclick=()=>f.click();
+    dz.ondragover=e=>{e.preventDefault();dz.classList.add('hover')};
+    dz.ondragleave=()=>dz.classList.remove('hover');
+    dz.ondrop=async e=>{e.preventDefault();dz.classList.remove('hover');if(e.dataTransfer.files[0])await handleDocUpload(e.dataTransfer.files[0])};
+    f.onchange=async e=>{if(e.target.files[0])await handleDocUpload(e.target.files[0])};
+  }
+  if(step===10){
+    $('#w_etype').onchange=e=>{c.engagement.type=e.target.value};
+    $('#w_estart').onchange=e=>{c.engagement.startedAt=e.target.value?Date.parse(e.target.value):null};
+    $('#w_fbasis').onchange=e=>{c.engagement.feeBasis=e.target.value};
+    $('#w_famt').oninput=e=>{c.engagement.feeAmount=Number(e.target.value)||0};
+    $('#w_ffreq').onchange=e=>{c.engagement.feeFrequency=e.target.value};
+    $('#w_scope').oninput=e=>{c.engagement.scopeNotes=e.target.value};
+    $('#w_special').oninput=e=>{c.engagement.specialTerms=e.target.value};
+  }
+  if(step===11){
+    $('#wiz_commit').onclick=commitWizard;
+  }
+}
+
+function renderWizardOnly(){
+  const c=getWizClient();
+  if(!c)return;
+  $('#view').querySelector('.wizard-body').innerHTML=wizardStep(c,ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind);
+  bindWizard();
+}
+
+function gotoStep(n){
+  if(n<1||n>STEPS.length)return;
+  saveDraftAndGo(n);
+}
+function wizNext(){if(state.wizardStep<STEPS.length)saveDraftAndGo(state.wizardStep+1)}
+function wizPrev(){if(state.wizardStep>1)saveDraftAndGo(state.wizardStep-1)}
+async function saveDraftAndGo(n){
+  const c=getWizClient();if(c){c.updatedAt=now();await dbPut('clients',c)}
+  state.wizardStep=n;render();
+}
+
+function cancelWizard(){
+  state.wizardClientId=null;state.wizardStep=1;render();
+}
+
+async function commitWizard(){
+  const c=getWizClient();if(!c)return;
+  const isInd=ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind;
+  if(c.kyc.sanctionsStatus==='match'){toast('Cannot commit — sanctions match','warn');return}
+  if(!isInd&&!c.entityName){toast('Entity name required','warn');return}
+  if(isInd&&!c.firstName){toast('First name required','warn');return}
+  c.kyc.lastReviewAt=now();
+  c.kyc.nextReviewDue=computeNextReview(c.kyc.riskGrade||'low');
+  c.engagement.nextReviewDue=addDays(now(),365);
+  c.engagement.startedAt=c.engagement.startedAt||now();
+  c.engagement.letterOfEngagementHash=await sha256(JSON.stringify({
+    id:c.id,scope:c.servicesEngaged,fee:c.engagement.feeAmount,basis:c.engagement.feeBasis,
+    parties:[state.firm.name,displayName(c)],startedAt:c.engagement.startedAt
+  }));
+  c.engagement.letterOfEngagementSignedAt=now();
+  c.onboardingStatus='committed';
+  if(c.sameTradingAddress)c.tradingAddress=Object.assign({},c.address);
+  await saveClient(c,'client.created','Onboarding committed via wizard');
+  broadcastNow('engagement.signed',{clientId:c.id,hash:c.engagement.letterOfEngagementHash,ts:now(),firmId:state.firm.id});
+  // queue engagement letter draft for fallbookspaper
+  const draft={id:'eng_'+uuid(),clientId:c.id,kind:'engagement-letter',createdAt:now(),body:buildEngagementLetter(c)};
+  await dbPut('engagementQueue',draft);
+  broadcastNow('engagement.draftReady',{clientId:c.id,draftId:draft.id,kind:'engagement-letter'});
+  toast('Client onboarded · engagement letter draft queued','success');
+  state.wizardClientId=null;state.wizardStep=1;state.currentClientId=c.id;render();
+}
+
+function buildEngagementLetter(c){
+  const firm=state.firm;
+  const isInd=ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind;
+  const svcs=(c.servicesEngaged||[]).map(s=>SERVICES.find(x=>x.id===s)?.label||s);
+  return `# Engagement letter
+
+**Between:** ${firm.name}${firm.tradingName?' t/a '+firm.tradingName:''}${firm.companiesHouseNo?' (CRN '+firm.companiesHouseNo+')':''}
+**And:** ${displayName(c)}${c.companiesHouseNo?' (CRN '+c.companiesHouseNo+')':''}
+**Dated:** ${fmtDate(c.engagement.startedAt||now())}
+
+## 1. Scope of services
+${svcs.map(s=>'- '+s).join('\n')}
+
+${c.engagement.scopeNotes?'\n### Detailed scope\n'+c.engagement.scopeNotes:''}
+
+## 2. Exclusions
+${c.engagement.specialTerms||'No specific exclusions noted.'}
+
+## 3. Fees
+- **Basis:** ${c.engagement.feeBasis}
+- **Amount:** £${Number(c.engagement.feeAmount||0).toFixed(2)} ${c.engagement.feeFrequency}
+- **VAT:** chargeable at the prevailing rate unless stated otherwise.
+
+## 4. Client responsibilities
+You are responsible for maintaining accurate, complete and timely records, providing source documents on request, and approving deliverables before submission. You remain responsible for all submissions to HMRC and Companies House.
+
+## 5. Anti-money-laundering
+This firm is supervised by ${firm.amlSupervisor}${firm.amlSupervisorRef?' (ref '+firm.amlSupervisorRef+')':''}. We are required to verify your identity and beneficial ownership before commencing work and on an ongoing basis. Records are retained for 5 years from end of relationship (MLR 2017 reg 40).
+
+## 6. Confidentiality &amp; data protection
+We will treat all information confidentially, subject to legal duties of disclosure (POCA 2002, MLR 2017). We process personal data under UK GDPR as data controller for our client records.
+
+## 7. Limitation of liability
+Our liability for any single matter shall not exceed [LIABILITY CAP TO BE AGREED]. Nothing limits liability for fraud, death or personal injury.
+
+## 8. Period &amp; termination
+This engagement begins on ${fmtDate(c.engagement.startedAt||now())} and continues until terminated by either party on 30 days' written notice.
+
+## 9. Complaints
+Address any complaint in writing to the senior partner. If unresolved you may refer the matter to ${firm.professionalBody||'our professional body'}.
+
+## 10. Applicable law
+The law of England and Wales applies.
+
+**Signed (for the firm):** _____________________
+**Signed (for the client):** _____________________
+
+---
+Generated by ${TOOLNAME} v${VERSION} · engagement-letter SHA-256: ${c.engagement.letterOfEngagementHash}`;
+}
+
+// ── wizard helpers ────────────────────────────────────────
+async function handleDocUpload(file){
+  const c=getWizClient()||state.clients.find(x=>x.id===state.currentClientId);
+  if(!c)return;
+  const sel=$('#w_doctype');
+  const type=sel?sel.value:'other';
+  const expDays=sel?Number(sel.options[sel.selectedIndex].dataset.exp)||null:null;
+  const note=$('#w_docnote')?.value||'';
+  const ref=await captureDoc(c.id,file,type,note,expDays);
+  c.kyc.documentsHeld=[...(c.kyc.documentsHeld||[]),ref];
+  await saveClient(c,'client.kyc.documentAdded',`Captured ${type} (${file.name}) · sha256 ${ref.sha256.slice(0,12)}`);
+  toast(`Captured · sha256 ${ref.sha256.slice(0,8)}…`,'success');
+  if(state.wizardClientId)renderWizardOnly();else render();
+}
+async function dlDoc(blobRef,name){
+  const blob=await getDocBlob(blobRef);
+  if(!blob){toast('Blob not found','warn');return}
+  download(name,blob);
+}
+async function rmDoc(blobRef){
+  if(!confirm('Remove document?'))return;
+  const c=getWizClient()||state.clients.find(x=>x.id===state.currentClientId);
+  if(!c)return;
+  c.kyc.documentsHeld=(c.kyc.documentsHeld||[]).filter(d=>d.blobRef!==blobRef);
+  await dbDel('cddDocuments',blobRef);
+  await saveClient(c,'client.kyc.documentRemoved','Document removed');
+  if(state.wizardClientId)renderWizardOnly();else render();
+}
+function addBO(){
+  const c=getWizClient();if(!c)return;
+  const name=prompt('Beneficial owner name?');if(!name)return;
+  const dob=prompt('DOB (YYYY-MM-DD)?')||'';
+  const address=prompt('Address?')||'';
+  const pct=Number(prompt('Ownership %?')||'0');
+  const ctl=prompt('Control notes?')||'';
+  c.beneficialOwners=[...(c.beneficialOwners||[]),{name,dob,address,ownershipPct:pct,controlNotes:ctl}];
+  saveClient(c,'client.bo.added',`BO added: ${name} (${pct}%)`).then(()=>renderWizardOnly());
+}
+function rmBO(i){
+  const c=getWizClient();if(!c)return;
+  if(!confirm('Remove this BO?'))return;
+  const r=c.beneficialOwners[i];
+  c.beneficialOwners.splice(i,1);
+  saveClient(c,'client.bo.removed',`BO removed: ${r?.name||''}`).then(()=>renderWizardOnly());
+}
+function addPSC(){
+  const c=getWizClient();if(!c)return;
+  const name=prompt('PSC name?');if(!name)return;
+  const noc=prompt('Nature of control? (e.g. ownership-of-shares-25-to-50-percent)')||'';
+  const dob=prompt('DOB YYYY-MM?')||'';
+  const nat=prompt('Nationality?')||'';
+  c.pscFromCompaniesHouse=[...(c.pscFromCompaniesHouse||[]),{name,natureOfControl:noc,dob,nationality:nat}];
+  saveClient(c,'client.psc.added',`PSC added: ${name}`).then(()=>renderWizardOnly());
+}
+function rmPSC(i){
+  const c=getWizClient();if(!c)return;
+  if(!confirm('Remove this PSC entry?'))return;
+  const r=c.pscFromCompaniesHouse[i];
+  c.pscFromCompaniesHouse.splice(i,1);
+  saveClient(c,'client.psc.removed',`PSC removed: ${r?.name||''}`).then(()=>renderWizardOnly());
+}
+function importPSCcsv(){
+  const c=getWizClient();if(!c)return;
+  const inp=document.createElement('input');inp.type='file';inp.accept='.csv,text/csv';
+  inp.onchange=async e=>{
+    const f=e.target.files[0];if(!f)return;
+    const text=await f.text();
+    const rows=text.split(/\r?\n/).filter(r=>r.trim());
+    if(!rows.length)return;
+    const header=rows[0].toLowerCase().split(',').map(h=>h.trim());
+    const idx={name:header.indexOf('name'),noc:header.indexOf('natureofcontrol'),dob:header.indexOf('dob'),nat:header.indexOf('nationality')};
+    let n=0;
+    for(let i=1;i<rows.length;i++){
+      const cols=rows[i].split(',').map(s=>s.trim().replace(/^"|"$/g,''));
+      const name=idx.name>=0?cols[idx.name]:cols[0];
+      if(!name)continue;
+      c.pscFromCompaniesHouse.push({
+        name,
+        natureOfControl:idx.noc>=0?cols[idx.noc]:'',
+        dob:idx.dob>=0?cols[idx.dob]:'',
+        nationality:idx.nat>=0?cols[idx.nat]:''
+      });
+      n++;
+    }
+    await saveClient(c,'client.psc.imported',`Imported ${n} PSC rows from CSV`);
+    toast(`${n} PSC rows imported`,'success');
+    renderWizardOnly();
+  };
+  inp.click();
+}
+function addAddrHist(){
+  const c=getWizClient();if(!c)return;
+  const address=prompt('Previous address (full single line)?');if(!address)return;
+  const from=prompt('From (YYYY-MM-DD)?')||'';
+  const to=prompt('To (YYYY-MM-DD)?')||'';
+  c.addressHistory=[...(c.addressHistory||[]),{address,from,to}];
+  saveClient(c,'client.addr.historyAdded','Prior address recorded').then(()=>renderWizardOnly());
+}
+function rmAddrHist(i){
+  const c=getWizClient();if(!c)return;
+  c.addressHistory.splice(i,1);
+  saveClient(c,'client.addr.historyRemoved','Prior address removed').then(()=>renderWizardOnly());
+}
+
+// ════════════════════════════════════════════════════════════════
+// CLIENT DETAIL
+// ════════════════════════════════════════════════════════════════
+function openClient(id){state.currentClientId=id;state.wizardClientId=null;render()}
+function closeClient(){state.currentClientId=null;render()}
+
+function renderClientDetail(){
+  const c=state.clients.find(x=>x.id===state.currentClientId);if(!c)return renderClientsList();
+  const isInd=ENTITY_TYPES.find(e=>e.id===c.entityType)?.ind;
+  const adv=state.advisers.find(a=>a.id===c.adviserId);
+  const overdue=c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now();
+  return `
+  <div class="section-h">
+    <div><h2>${esc(displayName(c))}</h2><div class="sub">${esc(ENTITY_TYPES.find(e=>e.id===c.entityType)?.label||c.entityType)} · ${esc(c.onboardingStatus||'in-progress')}</div></div>
+    <div class="actions">
+      <button class="btn ghost" onclick="closeClient()">&larr; clients</button>
+      <button class="btn" onclick="genCDDCertificate('${c.id}')">CDD certificate</button>
+      <button class="btn" onclick="genEngagementLetter('${c.id}')">Engagement letter</button>
+      <button class="btn" onclick="reviewAML('${c.id}')">Mark AML reviewed</button>
+      <button class="btn danger" onclick="archiveClient('${c.id}')">Archive</button>
+    </div>
+  </div>
+  ${overdue?'<div class="banner danger"><strong>AML review overdue.</strong> Last review '+fmtDate(c.kyc.lastReviewAt)+', due '+fmtDate(c.kyc.nextReviewDue)+'.</div>':''}
+  <div class="cd-grid">
+    <div class="cd-side">
+      <div class="who">${esc(displayName(c))}</div>
+      <div class="sub">${esc(c.id)}</div>
+      <div class="kpi"><span class="l">Type</span><span class="v brass">${esc(ENTITY_TYPES.find(e=>e.id===c.entityType)?.label||c.entityType)}</span></div>
+      ${c.companiesHouseNo?`<div class="kpi"><span class="l">CRN</span><span class="v"><a href="https://find-and-update.company-information.service.gov.uk/company/${esc(c.companiesHouseNo)}" target="_blank" rel="noopener noreferrer">${esc(c.companiesHouseNo)}</a></span></div>`:''}
+      ${c.vatNumber?`<div class="kpi"><span class="l">VAT</span><span class="v">${esc(c.vatNumber)}</span></div>`:''}
+      ${c.utr?`<div class="kpi"><span class="l">UTR</span><span class="v">${esc(c.utr)}</span></div>`:''}
+      ${c.nino?`<div class="kpi"><span class="l">NINO</span><span class="v">${esc(c.nino)}</span></div>`:''}
+      <div class="kpi"><span class="l">Risk</span><span class="v"><span class="risk-pill risk-${c.kyc?.riskGrade||'low'}">${c.kyc?.riskGrade||'low'}</span></span></div>
+      <div class="kpi"><span class="l">Adviser</span><span class="v">${esc(adv?.name||'—')}</span></div>
+      <div class="kpi"><span class="l">Onboarded</span><span class="v">${fmtDate(c.createdAt||c.ts)}</span></div>
+      <div class="kpi"><span class="l">Last reviewed</span><span class="v">${fmtDate(c.kyc?.lastReviewAt)}</span></div>
+      <div class="kpi"><span class="l">Next review</span><span class="v ${overdue?'red':''}">${fmtDate(c.kyc?.nextReviewDue)}</span></div>
+      <div class="actions">
+        <button class="btn sm" onclick="editClient('${c.id}')">Edit</button>
+        <button class="btn sm ghost" onclick="rerunSanctions('${c.id}')">Re-screen sanctions</button>
+        <button class="btn sm ghost" onclick="openDocsPanel('${c.id}')">+ document</button>
+      </div>
+    </div>
+    <div class="cd-body">
+      <div class="card">
+        <h3>Contact</h3>
+        <div class="kpi"><span class="l">Email</span><span class="v">${esc(c.email||'—')}</span></div>
+        <div class="kpi"><span class="l">Phone</span><span class="v">${esc(c.phone||'—')}</span></div>
+        <div class="kpi"><span class="l">Registered address</span><span class="v">${esc([c.address.line1,c.address.city,c.address.postcode].filter(Boolean).join(', ')||'—')}</span></div>
+        ${!c.sameTradingAddress?`<div class="kpi"><span class="l">Trading address</span><span class="v">${esc([c.tradingAddress?.line1,c.tradingAddress?.city,c.tradingAddress?.postcode].filter(Boolean).join(', ')||'—')}</span></div>`:''}
+      </div>
+      ${!isInd?`<div class="card">
+        <h3>Beneficial ownership / PSC <span class="meta">${(c.beneficialOwners||[]).length+(c.pscFromCompaniesHouse||[]).length} entries</span></h3>
+        ${(c.beneficialOwners||[]).map(b=>`<div class="kpi"><span class="l">BO · ${esc(b.name)}</span><span class="v brass">${esc(String(b.ownershipPct||0))}%</span></div>`).join('')}
+        ${(c.pscFromCompaniesHouse||[]).map(p=>`<div class="kpi"><span class="l">PSC · ${esc(p.name)}</span><span class="v">${esc(p.natureOfControl||'')}</span></div>`).join('')}
+        ${(c.beneficialOwners||[]).length+(c.pscFromCompaniesHouse||[]).length===0?'<div class="hint">No BO/PSC recorded</div>':''}
+      </div>`:''}
+      <div class="card">
+        <h3>CDD / AML</h3>
+        <div class="kpi"><span class="l">Status</span><span class="v ${c.kyc.status==='verified'?'green':'amber'}">${esc(c.kyc.status)}</span></div>
+        <div class="kpi"><span class="l">PEP flag</span><span class="v ${c.kyc.pepFlag?'amber':''}">${c.kyc.pepFlag?'yes — '+esc(c.kyc.pepDetails||''):'no'}</span></div>
+        <div class="kpi"><span class="l">Sanctions</span><span class="v ${c.kyc.sanctionsStatus==='clear'?'green':c.kyc.sanctionsStatus==='match'?'red':'amber'}">${esc(c.kyc.sanctionsStatus)} (${fmtDate(c.kyc.sanctionsCheckedAt)})</span></div>
+        <div class="kpi"><span class="l">Supervisor</span><span class="v">${esc(c.kyc.amlSupervisor)}${c.kyc.amlSupervisorRef?' / '+esc(c.kyc.amlSupervisorRef):''}</span></div>
+        <div class="kpi"><span class="l">Source of funds</span><span class="v">${esc(c.kyc.sourceOfFundsForServices||'—')}</span></div>
+        <div class="kpi"><span class="l">Nature &amp; purpose</span><span class="v">${esc(c.kyc.natureAndPurposeOfBusiness||'—')}</span></div>
+        <div class="kpi"><span class="l">Expected patterns</span><span class="v">${esc(c.kyc.expectedTransactionPatterns||'—')}</span></div>
+      </div>
+      <div class="card">
+        <h3>Engagement</h3>
+        <div class="kpi"><span class="l">Type</span><span class="v">${esc(c.engagement.type)}</span></div>
+        <div class="kpi"><span class="l">Services</span><span class="v">${(c.servicesEngaged||[]).map(s=>SERVICES.find(x=>x.id===s)?.label||s).join(' · ')||'—'}</span></div>
+        <div class="kpi"><span class="l">Fee</span><span class="v brass">£${Number(c.engagement.feeAmount||0).toFixed(2)} ${esc(c.engagement.feeFrequency)} (${esc(c.engagement.feeBasis)})</span></div>
+        <div class="kpi"><span class="l">Letter hash</span><span class="v" title="${esc(c.engagement.letterOfEngagementHash||'')}">${esc((c.engagement.letterOfEngagementHash||'').slice(0,16))}…</span></div>
+        <div class="kpi"><span class="l">Signed</span><span class="v">${fmtDate(c.engagement.letterOfEngagementSignedAt)}</span></div>
+      </div>
+      <div class="card">
+        <h3>Documents <span class="meta">${(c.kyc.documentsHeld||[]).length} held</span></h3>
+        <div class="doc-list">${(c.kyc.documentsHeld||[]).map(d=>docListRow(d)).join('')||'<div class="hint">No documents captured.</div>'}</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME}</div>`;
+}
+function bindClientDetail(){}
+
+async function reviewAML(id){
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  c.kyc.lastReviewAt=now();
+  c.kyc.nextReviewDue=computeNextReview(c.kyc.riskGrade||'low');
+  c.kyc.status='verified';
+  await saveClient(c,'client.kyc.reviewed',`AML review completed · grade ${c.kyc.riskGrade}`);
+  toast('AML review recorded','success');render();
+}
+async function rerunSanctions(id){
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  const r=prompt('Sanctions result? (clear / review / match)','clear');
+  if(!r||!['clear','review','match'].includes(r))return;
+  c.kyc.sanctionsStatus=r;
+  c.kyc.sanctionsCheckedAt=now();
+  c.kyc.sanctionsCheckedBy=state.activeAdviserId;
+  await saveClient(c,'client.kyc.sanctionsRescreen',`Re-screen result: ${r}`);
+  toast('Sanctions check updated','success');render();
+}
+async function archiveClient(id){
+  if(!confirm('Archive this client? Record kept 7 years per ICAEW.'))return;
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  c.archivedAt=now();
+  await saveClient(c,'client.archived','Client soft-archived');
+  state.currentClientId=null;render();
+}
+function editClient(id){state.currentClientId=null;state.wizardClientId=id;state.wizardStep=1;render()}
+function openDocsPanel(id){state.currentClientId=null;state.wizardClientId=id;state.wizardStep=9;render()}
+
+function genCDDCertificate(id){
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  const md=buildCDDCertificate(c);
+  download(`cdd-certificate-${c.id.slice(3,11)}.md`,md,'text/markdown');
+  audit('client.cdd.certIssued',c.id,'CDD certificate exported',{});
+}
+function buildCDDCertificate(c){
+  const firm=state.firm;
+  return `# CDD CERTIFICATE
+
+**Firm:** ${firm.name} (supervised by ${firm.amlSupervisor}${firm.amlSupervisorRef?' '+firm.amlSupervisorRef:''})
+**Client:** ${displayName(c)}${c.companiesHouseNo?' · CRN '+c.companiesHouseNo:''}
+**Issued:** ${fmtDT(now())}
+**By:** ${state.advisers.find(a=>a.id===c.adviserId)?.name||'—'}
+
+## Identity verified
+- Entity type: ${ENTITY_TYPES.find(e=>e.id===c.entityType)?.label||c.entityType}
+- Registered address: ${[c.address.line1,c.address.city,c.address.postcode].filter(Boolean).join(', ')||'(not recorded)'}
+${c.email?'- Email: '+c.email:''}
+${c.phone?'- Phone: '+c.phone:''}
+
+## Beneficial ownership
+${(c.beneficialOwners||[]).map(b=>'- '+b.name+' ('+(b.ownershipPct||0)+'%) — '+b.controlNotes).join('\n')||'_(none recorded)_'}
+
+## PSC register (mirror)
+${(c.pscFromCompaniesHouse||[]).map(p=>'- '+p.name+' — '+p.natureOfControl+' — '+(p.nationality||'?')).join('\n')||'_(none recorded)_'}
+
+## Risk assessment
+- **Grade:** ${c.kyc.riskGrade}
+- PEP: ${c.kyc.pepFlag?'YES — '+c.kyc.pepDetails:'no'}
+- Sanctions: ${c.kyc.sanctionsStatus} (checked ${fmtDate(c.kyc.sanctionsCheckedAt)})
+- Cash-intensive sector: ${c.kyc.cashHeavyFlag?'yes':'no'}
+- High-risk geography: ${c.kyc.highRiskGeoFlag?'yes':'no'}
+- Reasoning: ${c.kyc.notes||'—'}
+
+## Source of funds / business profile
+- Source of funds for fees: ${c.kyc.sourceOfFundsForServices||'—'}
+- Nature &amp; purpose: ${c.kyc.natureAndPurposeOfBusiness||'—'}
+- Expected transaction patterns: ${c.kyc.expectedTransactionPatterns||'—'}
+
+## Documents held (${(c.kyc.documentsHeld||[]).length})
+${(c.kyc.documentsHeld||[]).map(d=>'- **'+d.type+'** · '+d.filename+' · sha256 `'+d.sha256+'` · captured '+fmtDate(d.capturedAt)+(d.expiresAt?' · expires '+fmtDate(d.expiresAt):'')).join('\n')||'_(none)_'}
+
+## Engagement
+- Services: ${(c.servicesEngaged||[]).map(s=>SERVICES.find(x=>x.id===s)?.label||s).join(', ')||'—'}
+- Fee basis: ${c.engagement.feeBasis} · £${Number(c.engagement.feeAmount||0).toFixed(2)} ${c.engagement.feeFrequency}
+- Letter SHA-256: \`${c.engagement.letterOfEngagementHash||'—'}\`
+- Signed: ${fmtDate(c.engagement.letterOfEngagementSignedAt)}
+
+## Review schedule
+- Last reviewed: ${fmtDate(c.kyc.lastReviewAt)}
+- Next due: ${fmtDate(c.kyc.nextReviewDue)} (cadence: ${RISK_REVIEW_DAYS[c.kyc.riskGrade]||365} days)
+
+---
+Generated by **${TOOLNAME} v${VERSION}** · prime ${PRIME} · audit chain entry ${state.audit.length}.
+This certificate evidences CDD measures held on file at issue. Continued reliance requires ongoing monitoring per MLR 2017 reg 28(11).`;
+}
+function genEngagementLetter(id){
+  const c=state.clients.find(x=>x.id===id);if(!c)return;
+  const md=buildEngagementLetter(c);
+  download(`engagement-letter-${c.id.slice(3,11)}.md`,md,'text/markdown');
+  audit('client.engagement.exported',c.id,'Engagement letter exported',{});
+}
+
+// ════════════════════════════════════════════════════════════════
+// DASHBOARD
+// ════════════════════════════════════════════════════════════════
+function renderDashboard(){
+  const cs=state.clients.filter(c=>!c.archivedAt);
+  const tot=cs.length;
+  const high=cs.filter(c=>(c.kyc?.riskGrade)==='high').length;
+  const med=cs.filter(c=>(c.kyc?.riskGrade)==='medium').length;
+  const low=cs.filter(c=>(c.kyc?.riskGrade)==='low').length;
+  const overdue=cs.filter(c=>c.kyc?.nextReviewDue&&c.kyc.nextReviewDue<now());
+  const due30=cs.filter(c=>c.kyc?.nextReviewDue&&c.kyc.nextReviewDue>=now()&&c.kyc.nextReviewDue<addDays(now(),30));
+  const peps=cs.filter(c=>c.kyc?.pepFlag);
+  const sanctionMatches=cs.filter(c=>c.kyc?.sanctionsStatus==='match');
+  const draft=cs.filter(c=>c.onboardingStatus!=='committed');
+  return `
+  <div class="disclaimer">${disclaimerText()}</div>
+  <div class="section-h"><div><h2>Dashboard</h2><div class="sub">AML supervision overview</div></div></div>
+  <div class="dash-kpis">
+    <div class="dash-kpi"><div class="n">${tot}</div><div class="l">Active clients</div></div>
+    <div class="dash-kpi ok"><div class="n">${low}</div><div class="l">Low risk</div></div>
+    <div class="dash-kpi warn"><div class="n">${med}</div><div class="l">Medium risk</div></div>
+    <div class="dash-kpi due"><div class="n">${high}</div><div class="l">High risk</div></div>
+    <div class="dash-kpi due"><div class="n">${overdue.length}</div><div class="l">AML reviews overdue</div></div>
+    <div class="dash-kpi warn"><div class="n">${due30.length}</div><div class="l">Due within 30 days</div></div>
+    <div class="dash-kpi"><div class="n">${peps.length}</div><div class="l">PEP-flagged</div></div>
+    <div class="dash-kpi due"><div class="n">${sanctionMatches.length}</div><div class="l">Sanctions matches</div></div>
+    <div class="dash-kpi warn"><div class="n">${draft.length}</div><div class="l">Drafts in progress</div></div>
+  </div>
+  ${overdue.length?`<div class="card"><h3>Overdue AML reviews</h3>${overdue.map(c=>`<div class="kpi"><span class="l"><a onclick="openClient('${c.id}')">${esc(displayName(c))}</a></span><span class="v red">${fmtDate(c.kyc.nextReviewDue)} (${daysBetween(c.kyc.nextReviewDue,now())}d late)</span></div>`).join('')}</div>`:''}
+  ${due30.length?`<div class="card" style="margin-top:14px"><h3>Due within 30 days</h3>${due30.map(c=>`<div class="kpi"><span class="l"><a onclick="openClient('${c.id}')">${esc(displayName(c))}</a></span><span class="v amber">${fmtDate(c.kyc.nextReviewDue)} (${daysBetween(now(),c.kyc.nextReviewDue)}d)</span></div>`).join('')}</div>`:''}
+  ${peps.length?`<div class="card" style="margin-top:14px"><h3>PEP flags</h3>${peps.map(c=>`<div class="kpi"><span class="l"><a onclick="openClient('${c.id}')">${esc(displayName(c))}</a></span><span class="v amber">${esc(c.kyc.pepDetails||'(no details)')}</span></div>`).join('')}</div>`:''}
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME} · ${state.audit.length} audit entries</div>`;
+}
+
+// ════════════════════════════════════════════════════════════════
+// PSC CACHE
+// ════════════════════════════════════════════════════════════════
+function renderPSC(){
+  return `
+  <div class="section-h">
+    <div><h2>PSC cache</h2><div class="sub">${state.pscCache.length} companies cached · manual refresh (sovereign — no auto-fetch)</div></div>
+    <div class="actions">
+      <button class="btn ghost" onclick="addPSCCache()">+ add company manually</button>
+      <button class="btn ghost" onclick="exportPSCcache()">export JSON</button>
+    </div>
+  </div>
+  <div class="banner info">This cache stores PSC info you have manually copied from Companies House. To refresh, open the company on <a href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener noreferrer">Companies House</a>, copy the PSC list, and paste below. Sibling tools on the <code>fall-books</code> mesh can broadcast <code>psc.fetched</code> messages which populate this cache automatically.</div>
+  <div class="field"><label>Filter</label><input id="pscFilter" placeholder="company name or CRN…"></div>
+  ${state.pscCache.length===0?'<div class="empty"><div class="small">No PSC records cached.</div></div>':
+  `<table>
+    <thead><tr><th>CRN</th><th>Company</th><th>PSCs</th><th>Fetched</th><th></th></tr></thead>
+    <tbody id="pscTbody">${state.pscCache.map(p=>pscCacheRow(p)).join('')}</tbody>
+  </table>`}
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME}</div>`;
+}
+function pscCacheRow(p){
+  return `<tr class="row-link" data-name="${esc((p.companyName||'')+' '+(p.id||'')).toLowerCase()}">
+    <td><strong>${esc(p.id)}</strong></td>
+    <td>${esc(p.companyName||'—')}</td>
+    <td>${(p.pscs||[]).length}</td>
+    <td>${fmtDate(p.fetchedAt)}</td>
+    <td><button class="btn sm ghost" onclick="viewPSCcache('${esc(p.id)}')">view</button> <button class="btn sm danger" onclick="rmPSCcache('${esc(p.id)}')">×</button></td>
+  </tr>`;
+}
+function bindPSC(){
+  const f=$('#pscFilter');if(!f)return;
+  f.oninput=e=>{
+    const q=e.target.value.toLowerCase();
+    document.querySelectorAll('#pscTbody tr').forEach(tr=>{
+      tr.style.display=tr.dataset.name.includes(q)?'':'none';
+    });
+  };
+}
+function addPSCCache(){
+  const crn=prompt('Companies House number?');if(!crn)return;
+  const companyName=prompt('Company name?');
+  const pscRaw=prompt('Paste PSC list (one per line: name|natureOfControl|dob|nationality)');
+  const pscs=(pscRaw||'').split(/\n/).filter(Boolean).map(l=>{const[n,noc,dob,nat]=l.split('|').map(x=>(x||'').trim());return{name:n,natureOfControl:noc||'',dob:dob||'',nationality:nat||''}});
+  const rec={id:crn,companyName,pscs,fetchedAt:now()};
+  dbPut('pscCache',rec).then(()=>{
+    const idx=state.pscCache.findIndex(x=>x.id===crn);
+    if(idx>=0)state.pscCache[idx]=rec;else state.pscCache.push(rec);
+    broadcastNow('psc.fetched',rec);
+    toast('PSC cached','success');render();
+  });
+}
+function viewPSCcache(crn){
+  const p=state.pscCache.find(x=>x.id===crn);if(!p)return;
+  const body=`<div class="kpi"><span class="l">CRN</span><span class="v">${esc(p.id)}</span></div>
+    <div class="kpi"><span class="l">Company</span><span class="v">${esc(p.companyName||'—')}</span></div>
+    <div class="kpi"><span class="l">Fetched</span><span class="v">${fmtDate(p.fetchedAt)}</span></div>
+    <h3 style="font-family:var(--serif);margin:14px 0 8px">${(p.pscs||[]).length} PSCs</h3>
+    ${(p.pscs||[]).map(x=>`<div class="psc-row"><div class="pn">${esc(x.name)}<div class="dmeta">${esc(x.natureOfControl)}</div></div><div class="dmeta">${esc(x.dob||'')} · ${esc(x.nationality||'')}</div><div class="pp">PSC</div><span></span></div>`).join('')}`;
+  showModal('PSC '+p.id,body);
+}
+function rmPSCcache(crn){
+  if(!confirm('Remove from cache?'))return;
+  dbDel('pscCache',crn).then(()=>{
+    state.pscCache=state.pscCache.filter(x=>x.id!==crn);render();
+  });
+}
+function exportPSCcache(){
+  download(`psc-cache-${fmtDate(now())}.json`,JSON.stringify(state.pscCache,null,2),'application/json');
+}
+
+// ════════════════════════════════════════════════════════════════
+// FIRM TAB
+// ════════════════════════════════════════════════════════════════
+function renderFirm(){
+  const f=state.firm;
+  return `
+  <div class="section-h"><div><h2>Firm</h2><div class="sub">${esc(f.name)}</div></div></div>
+  <div class="grid-2">
+    <div class="card"><h3>Identity</h3>
+      <div class="field"><label>Name</label><input id="fr_name" value="${esc(f.name)}"></div>
+      <div class="field"><label>Trading name</label><input id="fr_trading" value="${esc(f.tradingName||'')}"></div>
+      <div class="field"><label>Practice type</label>
+        <select id="fr_ptype"><option value="sole-practitioner" ${f.practiceType==='sole-practitioner'?'selected':''}>Sole Practitioner</option><option value="partnership" ${f.practiceType==='partnership'?'selected':''}>Partnership</option><option value="llp" ${f.practiceType==='llp'?'selected':''}>LLP</option><option value="limited-company" ${f.practiceType==='limited-company'?'selected':''}>Limited Company</option></select>
+      </div>
+      <div class="field"><label>Companies House no</label><input id="fr_chno" value="${esc(f.companiesHouseNo||'')}"></div>
+      <div class="field"><label>VAT</label><input id="fr_vat" value="${esc(f.vatNumber||'')}"></div>
+    </div>
+    <div class="card"><h3>AML &amp; professional body</h3>
+      <div class="field"><label>Professional body</label>
+        <select id="fr_pb">${PROF_BODIES.map(p=>`<option value="${p}" ${f.professionalBody===p?'selected':''}>${p}</option>`).join('')}</select>
+      </div>
+      <div class="field"><label>Practising cert no</label><input id="fr_pc" value="${esc(f.practiceCertNo||'')}"></div>
+      <div class="field"><label>AML supervisor</label>
+        <select id="fr_aml">${AML_SUPERVISORS.map(s=>`<option value="${s}" ${f.amlSupervisor===s?'selected':''}>${s}</option>`).join('')}</select>
+      </div>
+      <div class="field"><label>AML supervisor ref</label><input id="fr_amlref" value="${esc(f.amlSupervisorRef||'')}"></div>
+      <div class="field"><label>HMRC agent ref</label><input id="fr_agent" value="${esc(f.hmrcAgentRef||'')}"></div>
+    </div>
+    <div class="card"><h3>Address</h3>
+      <div class="field"><label>Line 1</label><input id="fr_a1" value="${esc(f.registeredAddress?.line1||'')}"></div>
+      <div class="row"><div class="field"><label>City</label><input id="fr_city" value="${esc(f.registeredAddress?.city||'')}"></div><div class="field"><label>Postcode</label><input id="fr_pc2" value="${esc(f.registeredAddress?.postcode||'')}"></div></div>
+    </div>
+    <div class="card"><h3>Brand</h3>
+      <div class="field"><label>Engine display name (forkable)</label><input id="fr_brand" value="${esc(f.brandName||'FallBooksOnboard')}"></div>
+      <div class="field"><label>Brand colour</label><input id="fr_color" type="color" value="${esc(f.brandColor||'#8b1a1a')}"></div>
+    </div>
+  </div>
+  <div style="margin-top:14px"><button class="btn primary" onclick="saveFirm()">Save firm</button></div>
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME}</div>`;
+}
+function bindFirm(){}
+async function saveFirm(){
+  const f=state.firm;
+  f.name=$('#fr_name').value.trim();
+  f.tradingName=$('#fr_trading').value.trim();
+  f.practiceType=$('#fr_ptype').value;
+  f.companiesHouseNo=$('#fr_chno').value.trim();
+  f.vatNumber=$('#fr_vat').value.trim();
+  f.professionalBody=$('#fr_pb').value;
+  f.practiceCertNo=$('#fr_pc').value.trim();
+  f.amlSupervisor=$('#fr_aml').value;
+  f.amlSupervisorRef=$('#fr_amlref').value.trim();
+  f.hmrcAgentRef=$('#fr_agent').value.trim();
+  f.registeredAddress.line1=$('#fr_a1').value.trim();
+  f.registeredAddress.city=$('#fr_city').value.trim();
+  f.registeredAddress.postcode=$('#fr_pc2').value.trim();
+  f.brandName=$('#fr_brand').value.trim();
+  f.brandColor=$('#fr_color').value;
+  f.updatedAt=now();
+  await dbPut('firms',f);
+  await audit('firm.updated','','Firm record edited',{id:f.id});
+  broadcastNow('firm.updated',f);
+  if(f.brandName)$('#brandName').textContent=f.brandName;
+  toast('Firm saved','success');render();
+}
+
+// ════════════════════════════════════════════════════════════════
+// ADVISERS TAB
+// ════════════════════════════════════════════════════════════════
+function renderAdvisers(){
+  return `
+  <div class="section-h"><div><h2>Advisers</h2><div class="sub">${state.advisers.length} on roll · active: ${esc(state.advisers.find(a=>a.id===state.activeAdviserId)?.name||'—')}</div></div>
+    <div class="actions"><button class="btn primary" onclick="addAdviser()">+ adviser</button></div>
+  </div>
+  ${state.advisers.length===0?'<div class="empty"><div class="small">No advisers</div></div>':
+  `<table>
+    <thead><tr><th>Name</th><th>Body</th><th>Membership</th><th>Practising</th><th>Status</th><th></th></tr></thead>
+    <tbody>${state.advisers.map(a=>`<tr ${state.activeAdviserId===a.id?'style="background:rgba(184,151,74,0.08)"':''}>
+      <td><strong>${esc(a.name)}</strong>${state.activeAdviserId===a.id?' <span class="tag green">active</span>':''}</td>
+      <td>${esc(a.professionalBody||'—')}</td>
+      <td>${esc(a.membershipNo||'—')}</td>
+      <td>${a.practisingCert?.active?'<span class="tag green">active</span>':'<span class="tag muted">inactive</span>'} ${a.practisingCert?.expiresAt?'exp '+fmtDate(a.practisingCert.expiresAt):''}</td>
+      <td>${esc(a.status)}</td>
+      <td><button class="btn sm ghost" onclick="setActiveAdviser('${a.id}')">make active</button></td>
+    </tr>`).join('')}</tbody>
+  </table>`}
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME}</div>`;
+}
+function bindAdvisers(){}
+function addAdviser(){
+  const name=prompt('Adviser name?');if(!name)return;
+  const a={
+    id:'ad_'+uuid(),firmId:state.firm.id,createdAt:now(),updatedAt:now(),archivedAt:null,
+    name,email:'',phone:'',
+    professionalBody:'ICAEW',membershipNo:'',
+    practisingCert:{active:true,expiresAt:null},cpdHoursThisYear:0,
+    status:'active',startedAt:now(),leftAt:null
+  };
+  state.advisers.push(a);
+  dbPut('advisers',a).then(()=>{
+    audit('adviser.created','','Adviser added',{id:a.id,name});
+    broadcast('adviser.updated',a);
+    render();
+  });
+}
+function setActiveAdviser(id){
+  state.activeAdviserId=id;saveActiveAdviser();render();
+  toast('Active adviser changed','success');
+}
+
+// ════════════════════════════════════════════════════════════════
+// AML HELP / T0
+// ════════════════════════════════════════════════════════════════
+let chatLog=[];
+function renderQA(){
+  return `
+  <div class="section-h"><div><h2>AML Help</h2><div class="sub">${state.settings.tier} · ${T0_RULES.length} rules · BYOK Claude available</div></div>
+    <div class="actions"><button class="btn ghost" onclick="openModal('settings')">Settings / BYOK</button></div>
+  </div>
+  <div class="banner info">Ask anything about UK accountancy AML: MLR 2017, PSC, EDD triggers, PEP, sanctions, Companies House deadlines, engagement letters, fee disclosure, retention. T0 answers from a built-in rule book — no network. T3 (BYOK) calls Claude.</div>
+  <div class="chip-row">
+    ${T0_RULES.slice(0,12).map(r=>`<span class="chip" onclick="quickAsk('${esc(r.id)}')">${esc(r.title.split('—')[0].trim().toLowerCase())}</span>`).join('')}
+  </div>
+  <div class="chat" id="chatBox">${chatLog.map(m=>`<div class="msg ${m.role}">${esc(m.text)}${m.src?`<div class="src">${esc(m.src)}</div>`:''}</div>`).join('')||'<div class="hint" style="text-align:center;padding:30px;color:var(--cream-muted)">Ask a question to start…</div>'}</div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="e.g. ‘When do I need EDD?’" onkeydown="if(event.key==='Enter')ask()">
+    <button class="btn primary" onclick="ask()">ask</button>
+  </div>
+  <div class="foot">${TOOLNAME} v${VERSION} · prime ${PRIME}</div>`;
+}
+function bindQA(){const i=$('#chatInput');if(i)i.focus()}
+function quickAsk(id){
+  const r=T0_RULES.find(x=>x.id===id);if(!r)return;
+  chatLog.push({role:'user',text:r.title});
+  chatLog.push({role:'bot',text:r.body,src:'T0 · '+r.refs.join(' · ')});
+  render();
+}
+async function ask(){
+  const q=$('#chatInput').value.trim();if(!q)return;
+  $('#chatInput').value='';
+  chatLog.push({role:'user',text:q});
+  const a=await answer(q);
+  chatLog.push({role:'bot',text:a.text,src:a.src});
+  render();
+}
+async function answer(q){
+  const ql=q.toLowerCase();
+  for(const r of T0_RULES){
+    if(r.q.some(k=>ql.includes(k))){
+      return {text:r.body,src:'T0 · '+r.refs.join(' · ')};
+    }
+  }
+  if(state.settings.tier==='T3'&&state.settings.apiKey){
+    try{
+      const r=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'content-type':'application/json','x-api-key':state.settings.apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:state.settings.apiModel,max_tokens:1024,system:'You are an assistant for a UK accountancy firm. Answer concisely. Cite MLR 2017, ICAEW/ACCA codes, Companies Act 2006 sections where relevant. Never invent statute. If unsure, say so.',messages:[{role:'user',content:q}]})
+      });
+      if(!r.ok)throw new Error(r.statusText);
+      const j=await r.json();
+      return {text:(j.content||[]).map(c=>c.text).join(''),src:'T3 · Claude ('+state.settings.apiModel+')'};
+    }catch(e){return {text:'Claude call failed: '+e.message,src:'T3 error'}}
+  }
+  return {text:'No direct rule matched. Sample topics: '+T0_RULES.slice(0,4).map(r=>r.title.split('—')[0].trim()).join(' · ')+' · … (or enable T3 BYOK in Settings).',src:'T0 fallback'};
+}
+
+// ════════════════════════════════════════════════════════════════
+// MODALS
+// ════════════════════════════════════════════════════════════════
+function openModal(kind){
+  if(kind==='audit')showModal('Audit chain · '+state.audit.length+' entries',renderAuditModal());
+  else if(kind==='settings')showModal('Settings',renderSettingsModal());
+  else if(kind==='import')showModal('Import snapshot',renderImportModal());
+}
+function showModal(title,body){
+  $('#modalRoot').innerHTML=`<div class="modal-bg" onclick="if(event.target===this)closeModal()"><div class="modal"><div class="modal-h"><h3>${esc(title)}</h3><button class="modal-close" onclick="closeModal()">×</button></div><div class="modal-b">${body}</div></div></div>`;
+}
+function closeModal(){$('#modalRoot').innerHTML=''}
+function renderAuditModal(){
+  const rows=state.audit.slice(-200).reverse();
+  return `<div style="display:flex;gap:8px;margin-bottom:10px"><button class="btn sm" onclick="exportAudit()">Export full audit JSON</button><button class="btn sm ghost" onclick="verifyAudit()">Verify chain</button></div>
+    ${rows.map(e=>`<div class="audit-entry"><div class="a-action">#${e.i} · ${esc(e.action)}</div><div class="a-meta">${fmtDT(e.ts)} · ${esc(e.clientId||'(no client)')} · doc ${esc((e.docHash||'').slice(0,12))}</div>${e.reasoning?`<div class="a-reason">${esc(e.reasoning)}</div>`:''}</div>`).join('')||'<div class="hint">No entries.</div>'}`;
+}
+async function verifyAudit(){
+  let prev='GENESIS',ok=true;
+  for(const e of state.audit){
+    const calc=await sha256(JSON.stringify({prevHash:prev,ts:e.ts,action:e.action,clientId:e.clientId,payload:e.payload}));
+    if(calc!==e.docHash){ok=false;break}
+    prev=e.docHash;
+  }
+  toast(ok?'Audit chain verified ('+state.audit.length+' entries)':'CHAIN BROKEN',ok?'success':'warn');
+}
+function exportAudit(){
+  download(`audit-${fmtDate(now())}.json`,JSON.stringify({meta:{tool:TOOLNAME,version:VERSION,exportedAt:now(),count:state.audit.length},audit:state.audit},null,2),'application/json');
+}
+function renderSettingsModal(){
+  return `
+    <div class="field"><label>Tier</label>
+      <select id="set_tier"><option value="T0" ${state.settings.tier==='T0'?'selected':''}>T0 · sovereign (offline rule book)</option><option value="T3" ${state.settings.tier==='T3'?'selected':''}>T3 · Claude (BYOK)</option></select>
+    </div>
+    <div class="field"><label>Claude API key (kept in IDB only, never broadcast)</label><input id="set_key" type="password" value="${esc(state.settings.apiKey||'')}"></div>
+    <div class="field"><label>Model</label><input id="set_model" value="${esc(state.settings.apiModel||'claude-3-5-sonnet-20241022')}"></div>
+    <div style="display:flex;gap:8px;margin-top:14px"><button class="btn primary" onclick="saveSet()">Save</button><button class="btn ghost" onclick="exportSnapshot()">Export full snapshot</button><button class="btn danger" onclick="wipeAll()">Wipe device</button></div>`;
+}
+function saveSet(){
+  state.settings.tier=$('#set_tier').value;
+  state.settings.apiKey=$('#set_key').value.trim();
+  state.settings.apiModel=$('#set_model').value.trim();
+  saveSettings();closeModal();toast('Settings saved','success');render();
+}
+function renderImportModal(){
+  return `<div class="field"><label>Paste snapshot JSON (from another fall-books tool or a previous export)</label><textarea id="imp_text" style="min-height:200px;font-family:var(--mono)"></textarea></div>
+    <div style="display:flex;gap:8px"><button class="btn primary" onclick="doImport()">Import (merge by updatedAt)</button></div>`;
+}
+async function doImport(){
+  try{
+    const snap=JSON.parse($('#imp_text').value);
+    if(snap.firm){state.firm=snap.firm;await dbPut('firms',snap.firm)}
+    if(Array.isArray(snap.advisers))for(const a of snap.advisers){await dbPut('advisers',a);if(!state.advisers.find(x=>x.id===a.id))state.advisers.push(a)}
+    if(Array.isArray(snap.clients))for(const c of snap.clients){await dbPut('clients',c);if(!state.clients.find(x=>x.id===c.id))state.clients.push(c)}
+    if(snap.meta&&snap.meta.tool&&snap.meta.tool!==TOOLNAME)console.warn('Cross-tool import',snap.meta);
+    await audit('snapshot.imported','',`Imported snapshot · ${(snap.clients||[]).length} clients`,{meta:snap.meta||{}});
+    closeModal();toast('Imported','success');render();
+  }catch(e){toast('Invalid JSON: '+e.message,'warn')}
+}
+async function exportSnapshot(){
+  const snap={
+    meta:{tool:TOOLNAME,version:VERSION,exportedAt:now(),schemaVersion:SCHEMA_V,prime:PRIME},
+    firm:state.firm,advisers:state.advisers,clients:state.clients,pscCache:state.pscCache
+  };
+  download(`${TOOLNAME}-snapshot-${fmtDate(now())}.json`,JSON.stringify(snap,null,2),'application/json');
+}
+async function wipeAll(){
+  if(!confirm('WIPE all data on this device? Cannot be undone.'))return;
+  if(!confirm('Really wipe?'))return;
+  for(const s of ['firms','advisers','clients','cddDocuments','pscCache','audit','settings','engagementQueue'])await dbClear(s);
+  location.reload();
+}
+
+function disclaimerText(){
+  return `<strong>◊ ${TOOLNAME} v${VERSION}.</strong> Sovereign tool for UK accountancy practices: assists with client onboarding, AML CDD per MLR 2017, PSC + beneficial-ownership capture, engagement letters, document hashing, audit chain. <em>Not</em> an HMRC- or Companies-House-approved filing system; the practitioner remains responsible for all submissions and for ongoing AML compliance with their supervisor (HMRC / ICAEW / ACCA / etc). Sovereign — client data never leaves the device unless exported.`;
+}
+
+// ════════════════════════════════════════════════════════════════
+// REMOTE-TRIGGER (fall-signal command interface)
+// ════════════════════════════════════════════════════════════════
+window.addEventListener('message',async e=>{
+  const m=e.data;if(!m||m.target!==TOOLNAME||!m.action)return;
+  let r={ok:false};
+  if(m.action==='ping')r={ok:true,prime:PRIME,version:VERSION};
+  else if(m.action==='snapshot')r={ok:true,snapshot:{firm:state.firm,advisers:state.advisers,clients:state.clients}};
+  e.source?.postMessage({source:TOOLNAME,replyTo:m.id,r},'*');
+});
+
+// ════════════════════════════════════════════════════════════════
+// KONOMI sovereign tier
+// ════════════════════════════════════════════════════════════════
+window.KONOMI={active:true,tier:'sovereign',prime:PRIME,check:()=>({ok:true,tier:'sovereign',prime:PRIME,tool:TOOLNAME})};
+window.FALLBOOKSONBOARD={version:VERSION,prime:PRIME,state:()=>state,answer,T0_RULES};
+
+// ════════════════════════════════════════════════════════════════
+// BOOT
+// ════════════════════════════════════════════════════════════════
+(async function boot(){
+  try{
+    await openDB();
+    await loadAll();
+    meshBoot();
+    if(state.firm?.brandName)$('#brandName').textContent=state.firm.brandName;
+    if(state.firm?.brandColor){
+      // optional accent override (kept subtle)
+    }
+    render();
+    console.log(`%c◊ ${TOOLNAME} v${VERSION} · prime ${PRIME} · sovereign`,'color:#b8974a;font-family:Georgia,serif;font-size:14px');
+  }catch(e){
+    console.error('boot fail',e);
+    $('#view').innerHTML='<div class="banner danger"><strong>Boot error.</strong> '+esc(e.message)+'</div>';
+  }
+})();
+
+</script>
+</body>
+</html>
