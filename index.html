@@ -259,22 +259,19 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
     'llama-3b':  { id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC',   size: '~2GB',   label: '3B · balanced · default · most laptops' },
     'qwen-7b':   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',     size: '~5GB',   label: '7B · capable · needs decent GPU (M-series Mac / 8GB+ VRAM)' },
     'llama-8b':  { id: 'Llama-3.1-8B-Instruct-q4f16_1-MLC',   size: '~5GB',   label: '8B · common · needs decent GPU' },
-    'llama-70b': { id: 'Llama-3.1-70B-Instruct-q4f16_1-MLC',  size: '~40GB',  label: '70B · frontier · needs serious GPU + 64GB+ RAM' },
-  };
+    'llama-70b': { id: 'Llama-3.1-70B-Instruct-q4f16_1-MLC',  size: '~40GB',  label: '70B · frontier · needs serious GPU + 64GB+ RAM' }};
   const DEFAULT_MODEL = 'llama-3b';
 
   const T3_PROVIDERS = {
     anthropic: { label: 'Anthropic Claude', models: ['claude-sonnet-4-5','claude-opus-4-7','claude-haiku-4-5'], default: 'claude-sonnet-4-5', url: 'https://api.anthropic.com/v1/messages' },
     openai:    { label: 'OpenAI',           models: ['gpt-4o','gpt-4o-mini','o1-mini'],                          default: 'gpt-4o-mini',      url: 'https://api.openai.com/v1/chat/completions' },
-    google:    { label: 'Google Gemini',    models: ['gemini-1.5-pro','gemini-1.5-flash','gemini-2.0-flash-exp'], default: 'gemini-1.5-flash', url: 'https://generativelanguage.googleapis.com/v1beta/models/' },
-  };
+    google:    { label: 'Google Gemini',    models: ['gemini-1.5-pro','gemini-1.5-flash','gemini-2.0-flash-exp'], default: 'gemini-1.5-flash', url: 'https://generativelanguage.googleapis.com/v1beta/models/' }};
 
   // ─── State ───────────────────────────────────────────────────────
   const STATE = {
     config: loadConfig(),
     ai: { ready: false, loading: false, progress: 0, engine: null, model: null },
-    mesh: { active: false, peers: new Map(), bc: null, signal: null },
-  };
+    mesh: { active: false, peers: new Map(), bc: null, signal: null }};
 
   function loadConfig() {
     try { return JSON.parse(localStorage.getItem('fall-kit.config') || '{}'); }
@@ -341,8 +338,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
     if (tier === 'T2' && STATE.ai.ready && STATE.ai.engine) {
       const r = await STATE.ai.engine.chat.completions.create({
         messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userMsg }],
-        max_tokens: maxTokens,
-      });
+        max_tokens: maxTokens});
       return r.choices[0].message.content;
     }
     if (tier === 'T3' && STATE.config.api_key && STATE.config.api_provider) {
@@ -359,8 +355,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
       const r = await fetch(T3_PROVIDERS.anthropic.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
-        body: JSON.stringify({ model, max_tokens: maxTokens, system: sys, messages: [{ role: 'user', content: msg }] }),
-      });
+        body: JSON.stringify({ model, max_tokens: maxTokens, system: sys, messages: [{ role: 'user', content: msg }] })});
       if (!r.ok) throw new Error('Anthropic ' + r.status + ': ' + (await r.text()).slice(0, 200));
       const j = await r.json();
       return j.content[0].text;
@@ -369,8 +364,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
       const r = await fetch(T3_PROVIDERS.openai.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + key },
-        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }] }),
-      });
+        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }] })});
       if (!r.ok) throw new Error('OpenAI ' + r.status);
       const j = await r.json();
       return j.choices[0].message.content;
@@ -379,8 +373,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
       const r = await fetch(T3_PROVIDERS.google.url + model + ':generateContent?key=' + encodeURIComponent(key), {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: sys + '\n\n---\n\n' + msg }] }], generationConfig: { maxOutputTokens: maxTokens } }),
-      });
+        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: sys + '\n\n---\n\n' + msg }] }], generationConfig: { maxOutputTokens: maxTokens } })});
       if (!r.ok) throw new Error('Google ' + r.status);
       const j = await r.json();
       return j.candidates[0].content.parts[0].text;
@@ -621,8 +614,7 @@ input[type=radio]{width:auto;margin-right:6px;accent-color:var(--brass)}
     openMint: openMint,  // v1.2 · launch kcc-mint with this seed prefilled as parent
     MODELS: WEBLLM_MODELS,
     PROVIDERS: T3_PROVIDERS,
-    state: STATE,
-  };
+    state: STATE};
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -677,8 +669,7 @@ const TABS=[
   {id:'psc',label:'PSC Cache'},
   {id:'firm',label:'Firm'},
   {id:'advisers',label:'Advisers'},
-  {id:'qa',label:'AML Help'},
-];
+  {id:'qa',label:'AML Help'}];
 
 const ENTITY_TYPES=[
   {id:'sole-trader',label:'Sole Trader',ind:true},
@@ -688,8 +679,7 @@ const ENTITY_TYPES=[
   {id:'charity',label:'Charity',ind:false},
   {id:'trust',label:'Trust',ind:false},
   {id:'public-body',label:'Public Body',ind:false},
-  {id:'other',label:'Other',ind:false},
-];
+  {id:'other',label:'Other',ind:false}];
 
 const AML_SUPERVISORS=['HMRC','ICAEW','ACCA','CIMA','AAT','CIOT','ATT','IFA','other'];
 const PROF_BODIES=['ICAEW','ACCA','CIMA','AAT','CIOT','ATT','IFA','other'];
@@ -701,22 +691,19 @@ const SERVICES=[
   {id:'sa',label:'Self-Assessment (SA100)'},
   {id:'tax-planning',label:'Tax Planning'},
   {id:'bookkeeping',label:'Bookkeeping'},
-  {id:'companies-house-filings',label:'Companies House Filings'},
-];
+  {id:'companies-house-filings',label:'Companies House Filings'}];
 const VAT_SCHEMES=[
   {id:'none',label:'Not VAT registered'},
   {id:'standard',label:'Standard'},
   {id:'flat-rate',label:'Flat Rate'},
   {id:'cash',label:'Cash Accounting'},
   {id:'annual',label:'Annual Accounting'},
-  {id:'margin',label:'Margin (2nd-hand)'},
-];
+  {id:'margin',label:'Margin (2nd-hand)'}];
 const FEE_BASES=[
   {id:'fixed-monthly',label:'Fixed Monthly'},
   {id:'hourly',label:'Hourly'},
   {id:'fixed-annual',label:'Fixed Annual'},
-  {id:'per-job',label:'Per Job'},
-];
+  {id:'per-job',label:'Per Job'}];
 const DOC_TYPES_INDIV=[
   {id:'passport',label:'Passport',expDays:365*10},
   {id:'driving-licence',label:'Driving Licence',expDays:365*10},
@@ -724,8 +711,7 @@ const DOC_TYPES_INDIV=[
   {id:'utility-bill',label:'Utility Bill (POA)',expDays:90},
   {id:'bank-statement',label:'Bank Statement (POA)',expDays:90},
   {id:'council-tax',label:'Council Tax Bill',expDays:365},
-  {id:'mortgage-statement',label:'Mortgage Statement',expDays:365},
-];
+  {id:'mortgage-statement',label:'Mortgage Statement',expDays:365}];
 const DOC_TYPES_ENTITY=[
   {id:'cert-incorporation',label:'Certificate of Incorporation',expDays:null},
   {id:'latest-accounts',label:'Latest Filed Accounts',expDays:365},
@@ -733,8 +719,7 @@ const DOC_TYPES_ENTITY=[
   {id:'reg-office-proof',label:'Proof of Registered Office',expDays:365},
   {id:'trust-deed',label:'Trust Deed',expDays:null},
   {id:'partnership-agreement',label:'Partnership Agreement',expDays:null},
-  {id:'authority-letter',label:'Authority / 64-8 Letter',expDays:365},
-];
+  {id:'authority-letter',label:'Authority / 64-8 Letter',expDays:365}];
 
 const CASH_HEAVY_SECTORS=[
   'restaurants/takeaways','taxis/private-hire','car wash','convenience store','market trader',
@@ -784,7 +769,7 @@ const T0_RULES=[
 
   {id:'ch-deadlines',q:['companies house','ch deadline','filing deadline','cs01','accounts deadline'],
     title:'Companies House filing deadlines',
-    body:'(a) Annual accounts: 9 months after period end (private company), 6 months (public). First accounts: 21 months from incorporation (private) / 18 (public). (b) Confirmation statement CS01: at least once every 12 months, due 14 days after the review period end. (c) PSC changes: notify within 14 days of company learning, file within further 14 days. (d) Officer changes (AP01 / AP03 / TM01): 14 days. (e) Change of registered office (AD01): when filed (effective on receipt). Late filing penalties for accounts: £150 (up to 1mo), £375 (1-3mo), £750 (3-6mo), £1500 (>6mo) — DOUBLED if late in two consecutive years.',
+    body:'(a) Annual accounts: 9 months after period end (private company), 6 months (public). First accounts: 21 months from incorporation (private) / 18 (public). (b) Confirmation statement CS01: at least once every 12 months, due 14 days after the review period end. (c) PSC changes: notify within 14 days of company learning, file within further 14 days. (d) Officer changes (AP01 / AP03 / TM01): 14 days. (e) Change of registered office (AD01): when filed (effective on receipt). Late filing penalties for accounts: TBA (up to 1mo), TBA (1-3mo), TBA (3-6mo), TBA0 (>6mo) — DOUBLED if late in two consecutive years.',
     refs:['Companies Act 2006 s.441-453','Companies House late filing penalties manual']},
 
   {id:'engagement',q:['engagement letter','letter of engagement','engagement requirements'],
@@ -805,8 +790,7 @@ const T0_RULES=[
   {id:'retention',q:['retention','how long','5 years','7 years','keep records'],
     title:'AML record retention — 5 vs 6 vs 7 years',
     body:'(a) AML/KYC records under MLR 2017 reg 40: 5 YEARS from the end of the business relationship (or completion of one-off transaction). (b) Tax records (HMRC): 6 YEARS for businesses; individuals 22 months after end of relevant tax year (longer if SA late or under enquiry). (c) ICAEW Code: 7 YEARS for working papers supporting any engagement (ICAEW guidance — beyond the statutory minimum for ethical/practice reasons). (d) Companies Act records: 3 years (private)/6 years (public) for accounting records; minute books permanently. PRACTICAL RULE: retain AML and engagement papers 7 years from end of relationship to satisfy all overlapping regimes.',
-    refs:['MLR 2017 reg 40','TMA 1970 s.12B','ICAEW Code §240.20','CA 2006 s.388']},
-];
+    refs:['MLR 2017 reg 40','TMA 1970 s.12B','ICAEW Code §240.20','CA 2006 s.388']}];
 
 // ════════════════════════════════════════════════════════════════
 // UTIL
@@ -1015,8 +999,7 @@ const state={
   wizardClientId:null,
   wizardStep:1,
   filterRisk:'all',
-  filterService:'all',
-};
+  filterService:'all'};
 
 async function loadAll(){
   const firms=await dbAll('firms');state.firm=firms[0]||null;
@@ -1357,7 +1340,7 @@ async function seedDemoIfEmpty(){
   c.kyc.riskGrade='low';
   c.kyc.pepFlag=false;c.kyc.sanctionsStatus='clear';c.kyc.sanctionsCheckedAt=now();
   c.kyc.sourceOfFundsForServices='Operating company revenue, paid by direct debit monthly.';
-  c.kyc.natureAndPurposeOfBusiness='Import/export of building hardware (B2B). Customers UK + EU. Annual turnover ~£420k.';
+  c.kyc.natureAndPurposeOfBusiness='Import/export of building hardware (B2B). Customers UK + EU. Annual turnover ~TBAk.';
   c.kyc.expectedTransactionPatterns='~30 invoices/month outbound, ~80 inbound. No cash. All bank/card.';
   c.kyc.amlSupervisor='ICAEW';c.kyc.amlSupervisorRef='—';
   c.kyc.lastReviewAt=now();c.kyc.nextReviewDue=addDays(now(),365);
@@ -1448,8 +1431,7 @@ const STEPS=[
   {n:8,id:'pep',label:'PEP/Sanctions'},
   {n:9,id:'docs',label:'Docs'},
   {n:10,id:'engagement',label:'Engagement'},
-  {n:11,id:'commit',label:'Commit'},
-];
+  {n:11,id:'commit',label:'Commit'}];
 
 function newClient(){
   const c=newClientRecord();
@@ -1558,7 +1540,7 @@ function stepIdentity(c,isInd){
       <div class="field"><label>Accounting period end</label><input id="w_ape" type="date" value="${esc(c.accountingPeriodEnd)}"></div>
       <div class="field"><label>Year end (MM-DD)</label><input id="w_ye" value="${esc(c.yearEnd)}" placeholder="03-31"></div>
     </div>
-    <div class="field"><label>Issued share capital</label><input id="w_sc" value="${esc(c.shareCapital)}" placeholder="100 ordinary £1 shares"></div>
+    <div class="field"><label>Issued share capital</label><input id="w_sc" value="${esc(c.shareCapital)}" placeholder="100 ordinary TBA shares"></div>
   `;
 }
 function stepContact(c){
@@ -1779,7 +1761,7 @@ function stepEngagement(c){
       <textarea id="w_scope" placeholder="e.g. Year-end accounts, CT600 corporation tax return, four quarterly VAT returns, monthly payroll for up to 3 employees, annual confirmation statement.">${esc(c.engagement.scopeNotes)}</textarea>
     </div>
     <div class="field"><label>Special terms / exclusions</label>
-      <textarea id="w_special" placeholder="e.g. Excludes HMRC enquiry work, R&D claims, share scheme advice. Charged separately at hourly rate £150+VAT.">${esc(c.engagement.specialTerms)}</textarea>
+      <textarea id="w_special" placeholder="e.g. Excludes HMRC enquiry work, R&D claims, share scheme advice. Charged separately at hourly rate TBA+VAT.">${esc(c.engagement.specialTerms)}</textarea>
     </div>
   `;
 }
